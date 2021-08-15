@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <link rel="stylesheet" type="text/css" href="./styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <title>Comment Tracker</title>
+  </head>
+  <body>
+    <div class="mContainer">
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <input id="nameInput"></input>
+          <div id="nameSubmit"></div>
+        </div>
+      </div>
+      <div id="chartModal" class="modal">
+        <div class="modal-content">
+          <canvas id="chart" width="400" height="400"></canvas>
+        </div>
+      </div>
+      <div id="dropdownContainer">
+        <div class="margin"></div>
+        <p id="create">Create</p>
+        <div class="margin"></div>
+        <h2 id="dropdown">Page Name</h2>
+        <div class="margin"></div>
+        <p id="delete">Delete</p>
+        <div class="margin"></div>
+      </div>
+      <div id="dropdownListContainer">
+        <div id="dropdownList">
+        </div>
+      </div>
+      <div id="chartContainer">
+        <p id="openChart">Chart</p>
+      </div>
+      <div class="center" id="submissionContainer">
+        <textarea rows="5" cols="70" name="textbox" id="textbox"></textarea>
+        <div id="submitComment"></div>
+      </div>
+
+      <div id="currentComments" class="center"></div>
+    </div>
+    <script type="module" src="./scripts.js"></script>
+  </body>
+</html>

@@ -382,7 +382,7 @@ var myChart
 
   for (let i = 0; i < comments.length; i++) {
     if (comments[i] != null) {
-      final_comments.push(comments[i].substring(0, 7))
+      final_comments.push(comments[i])
       final_counts.push(counts[i])
     }
   }
@@ -400,13 +400,44 @@ var myChart
       legend: {
         display: false
       },
+      tooltips: {
+        callbacks: {
+          title: (items, data, index) => { 
+            return data.labels[items[0].index].split(" ")
+          }
+        }
+      },
+      animation: {
+        onComplete: function () {
+          var chartInstance = this.chart;
+          var ctx = chartInstance.ctx;
+          var height = chartInstance.controller.boxes[0].bottom;
+          ctx.textAlign = "center";
+          ctx.overflow = "hidden"
+          Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
+            var meta = chartInstance.controller.getDatasetMeta(i);
+            Chart.helpers.each(meta.data.forEach(function (bar, index) {
+
+              final_comments[index].split(" ").forEach((element, i) => {
+                ctx.fillStyle = "white";
+                ctx.fillText(element, bar._model.x, bar._model.y + i * 10);
+              })
+            }),this)
+          }),this);
+        }
+      },
       maintainAspectRatio: false,
       scales: {
         yAxes: [{
           ticks: {
             beginAtZero: true
           }
-        }]
+        }],
+        xAxes: [{
+          ticks: {
+              display: false
+          }
+      }]
       }
     }
 });

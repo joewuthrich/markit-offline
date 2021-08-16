@@ -10,7 +10,7 @@ let nameSubmit = document.getElementById("nameSubmit");
 let dropdownList = document.getElementById("dropdownList");
 let openChart = document.getElementById("openChart");
 let chart = document.getElementById("chart");
-let chartModal = document.getElementById("chartModal")
+let chartModal = document.getElementById("chartModal");
 
 let commentCount = 0;
 
@@ -19,8 +19,7 @@ let page = "test";
 window.onload = () => {
   let data = localStorage.getItem("data");
 
-  if (!data)
-    localStorage.setItem("data", JSON.stringify({}));
+  if (!data) localStorage.setItem("data", JSON.stringify({}));
   else {
     let keys = Object.keys(data);
     loadPage(keys[keys.length - 2]);
@@ -42,20 +41,20 @@ submit.addEventListener("click", () => {
  * Open the page name dropdown
  */
 dropdown.addEventListener("click", () => {
-  dropdownListContainer.style.display = dropdownListContainer.style.display == "flex" ? "none" : "flex";
-})
+  dropdownListContainer.style.display =
+    dropdownListContainer.style.display == "flex" ? "none" : "flex";
+});
 
 /**
  * Submit a name for the page
  */
 nameSubmit.onclick = () => {
-  if (submitInput.value == "")
-    return;
+  if (submitInput.value == "") return;
 
   addPage(submitInput.value);
 
   modal.style.display = "none";
-}
+};
 
 /**
  * Check for a user removing a page
@@ -63,9 +62,8 @@ nameSubmit.onclick = () => {
 remove.onclick = () => {
   dropdownListContainer.style.display = "none";
 
- removePage();
-}
-
+  removePage();
+};
 
 /**
  * Listener for the enter key to submit a comment
@@ -105,7 +103,6 @@ function loadNamesFromStorage() {
   }
 }
 
-
 /**
  * Remove the current page from the list of pages
  */
@@ -114,11 +111,10 @@ function removePage() {
 
   let keys = Object.keys(data);
 
-  if (keys.length <= 2)
-    return;
-  
+  if (keys.length <= 2) return;
+
   for (let i = 0; i < keys.length - 1; i += 1) {
-    console.log(dropdownList.children[i].textContent)
+    console.log(dropdownList.children[i].textContent);
     if (dropdownList.children[i].textContent == page) {
       dropdownList.removeChild(dropdownList.children[i]);
       break;
@@ -134,13 +130,14 @@ function removePage() {
 
   localStorage.setItem("data", JSON.stringify(data));
 
-  let height = dropdownList.style.height
+  let height = dropdownList.style.height;
 
-  dropdownList.style.height = height ? (parseInt(height.substring(0, height.length - 2)) - 28) + "px" : "28px";
+  dropdownList.style.height = height
+    ? parseInt(height.substring(0, height.length - 2)) - 28 + "px"
+    : "28px";
 
   loadPage(page);
 }
-
 
 /**
  * Add a new page
@@ -148,18 +145,27 @@ function removePage() {
  * @param create if you are loading the comment from storage
  */
 function addPage(name, loading = false) {
-  dropdownList.appendChild
+  dropdownList.appendChild;
 
   loadPage(name);
 
   modal.style.display = "none";
 
-  if (Object.keys(JSON.parse(localStorage.getItem("data"))).includes(name + "comments𝕕𝕕") && !loading)
-    return; 
+  if (
+    Object.keys(JSON.parse(localStorage.getItem("data"))).includes(
+      name + "comments𝕕𝕕"
+    ) &&
+    !loading
+  )
+    return;
 
   let data = JSON.parse(localStorage.getItem("data"));
-  data[page + "comments𝕕𝕕"] = data[page + "comments𝕕𝕕"] ? data[page + "comments𝕕𝕕"] : [];
-  data[page + "counts𝕕𝕕"] = data[page + "counts𝕕𝕕"] ? data[page + "counts𝕕𝕕"] : [];
+  data[page + "comments𝕕𝕕"] = data[page + "comments𝕕𝕕"]
+    ? data[page + "comments𝕕𝕕"]
+    : [];
+  data[page + "counts𝕕𝕕"] = data[page + "counts𝕕𝕕"]
+    ? data[page + "counts𝕕𝕕"]
+    : [];
 
   localStorage.setItem("data", JSON.stringify(data));
 
@@ -171,15 +177,16 @@ function addPage(name, loading = false) {
     loadPage(name);
 
     dropdownListContainer.style.display = "none";
-  }
+  };
 
   dropdownList.appendChild(pageElement);
 
-  let height = dropdownList.style.height 
+  let height = dropdownList.style.height;
 
-  dropdownList.style.height = height ? (parseInt(height.substring(0, height.length - 2)) + 28) + "px" : "28px";
+  dropdownList.style.height = height
+    ? parseInt(height.substring(0, height.length - 2)) + 28 + "px"
+    : "28px";
 }
-
 
 /**
  * Load a page onto the screen.
@@ -189,7 +196,7 @@ function loadPage(name) {
   let currentComments = document.getElementById("currentComments");
   currentComments.innerHTML = "";
 
-  submitInput.value = ""
+  submitInput.value = "";
 
   page = name;
 
@@ -197,7 +204,6 @@ function loadPage(name) {
 
   loadCommentsFromStorage();
 }
-
 
 /**
  * Add a comment to the page
@@ -224,7 +230,6 @@ function addComment(
 
   textbox.focus();
 }
-
 
 /**
  * Add a comment to the list of data.
@@ -360,96 +365,143 @@ create.onclick = () => {
 
   modal.style.display = "block";
 
-  submitInput.focus()
-}
+  submitInput.focus();
+};
 
-var myChart
+var myChart;
 
 /**
  * Open the chart
  */
- openChart.onclick = () => {
-
+openChart.onclick = () => {
   let data = JSON.parse(localStorage.getItem("data"));
   let comments = data[page + "comments𝕕𝕕"] ? data[page + "comments𝕕𝕕"] : [];
   let counts = data[page + "counts𝕕𝕕"] ? data[page + "counts𝕕𝕕"] : [];
 
-  if (myChart)
-    myChart.destroy()
+  if (myChart) myChart.destroy();
 
-  let final_comments = []
-  let final_counts = []
+  let final_comments = [];
+  let final_counts = [];
 
-  for (let i = 0; i < comments.length; i++) {
+  let arrays = sortArrays(comments, counts);
+
+  console.log(arrays[1]);
+
+  for (let i = 0; i < (comments.length > 6 ? 6 : comments.length); i++) {
     if (comments[i] != null) {
-      final_comments.push(comments[i])
-      final_counts.push(counts[i])
+      final_comments.push(comments[i]);
+      final_counts.push(counts[i]);
     }
   }
 
   myChart = new Chart(chart, {
-    type: 'bar',
+    type: "bar",
     data: {
-        labels: final_comments,
-        datasets: [{
-            data: final_counts,
-            backgroundColor: "#71856a"
-        }]
+      labels: final_comments,
+      datasets: [
+        {
+          data: final_counts,
+          backgroundColor: "#71856a",
+        },
+      ],
     },
     options: {
+      title: {
+        display: true,
+        text: "Graph of Common Issues for " + page,
+      },
       legend: {
-        display: false
+        display: false,
       },
       tooltips: {
         callbacks: {
-          title: (items, data, index) => { 
-            return data.labels[items[0].index].split(" ")
-          }
-        }
+          title: (items, data) => {
+            return data.labels[items[0].index].split(/\s|\n/g);
+          },
+        },
       },
       animation: {
         onComplete: function () {
           var chartInstance = this.chart;
           var ctx = chartInstance.ctx;
-          var height = chartInstance.controller.boxes[0].bottom;
           ctx.textAlign = "center";
-          ctx.overflow = "hidden"
-          Chart.helpers.each(this.data.datasets.forEach(function (dataset, i) {
-            var meta = chartInstance.controller.getDatasetMeta(i);
-            Chart.helpers.each(meta.data.forEach(function (bar, index) {
-
-              final_comments[index].split(" ").forEach((element, i) => {
-                ctx.fillStyle = "white";
-                ctx.fillText(element, bar._model.x, bar._model.y + i * 10);
-              })
-            }),this)
-          }),this);
-        }
+          ctx.overflow = "hidden";
+          Chart.helpers.each(
+            this.data.datasets.forEach(function (dataset, i) {
+              var meta = chartInstance.controller.getDatasetMeta(i);
+              Chart.helpers.each(
+                meta.data.forEach(function (bar, index) {
+                  final_comments[index]
+                    .split(/\s|\n/g)
+                    .forEach((element, i) => {
+                      ctx.fillStyle = "white";
+                      ctx.fillText(
+                        element,
+                        bar._model.x,
+                        bar._model.y + i * 11 + 11
+                      );
+                    });
+                }),
+                this
+              );
+            }),
+            this
+          );
+        },
       },
       maintainAspectRatio: false,
       scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }],
-        xAxes: [{
-          ticks: {
-              display: false
-          }
-      }]
-      }
-    }
-});
+        yAxes: [
+          {
+            ticks: {
+              beginAtZero: true,
+            },
+            scaleLabel: {
+              display: true,
+              labelString: "Number of Occurances",
+            },
+          },
+        ],
+        xAxes: [
+          {
+            ticks: {
+              display: false,
+            },
+          },
+        ],
+      },
+    },
+  });
 
   chartModal.style.display = "block";
-}
+};
 
 /**
  * Close the chart
  */
- window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target == chartModal) {
     chartModal.style.display = "none";
   }
-} 
+};
+
+/**
+ * Sort two arrays together based on a single one
+ * @returns an array, where [0] is the first list and [1] is the second list.
+ */
+function sortArrays(array_1, array_2) {
+  var list = [];
+  for (var j = 0; j < array_1.length; j++)
+    list.push({ a1: array_1[j], a2: array_2[j] });
+
+  list.sort(function (a, b) {
+    return a.a2 > b.a2 ? -1 : a.a2 == b.a2 ? 0 : 1;
+  });
+
+  for (var k = 0; k < list.length; k++) {
+    array_1[k] = list[k].a1;
+    array_2[k] = list[k].a2;
+  }
+
+  return [array_1, array_2];
+}

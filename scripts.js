@@ -114,7 +114,6 @@ function removePage() {
   if (keys.length <= 2) return;
 
   for (let i = 0; i < keys.length - 1; i += 1) {
-    console.log(dropdownList.children[i].textContent);
     if (dropdownList.children[i].textContent == page) {
       dropdownList.removeChild(dropdownList.children[i]);
       break;
@@ -384,8 +383,6 @@ openChart.onclick = () => {
   let final_counts = [];
 
   let arrays = sortArrays(comments, counts);
-
-  console.log(arrays[1]);
 
   for (let i = 0; i < (comments.length > 6 ? 6 : comments.length); i++) {
     if (comments[i] != null) {

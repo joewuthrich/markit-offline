@@ -322,13 +322,26 @@ function increaseCount(element) {
 function createComment(value, number, index) {
   let contDiv = document.createElement("div");
 
-  let dButton = document.createElement("div");
-  dButton.classList.add("delete");
+  let div = document.createElement("div");
+  div.classList.add("commentContainer");
+
+  let editDeleteDiv = document.createElement("div");
+  editDeleteDiv.classList.add("editDeleteDiv");
+
+  let dButton = document.createElement("p");
+  dButton.appendChild(document.createTextNode(String.fromCharCode("215")));
+  dButton.classList.add("deleteX");
   dButton.addEventListener("click", () => {
     removeCommentFromStorage(dButton.parentNode.children[0]);
     let commentBox = dButton.parentNode.parentNode;
     commentBox.parentNode.removeChild(commentBox);
   });
+
+  let editButton = document.createElement("p");
+  editButton.appendChild(document.createTextNode(String.fromCharCode("9998")));
+  editButton.classList.add("editBtn");
+  editDeleteDiv.appendChild(editButton);
+  editDeleteDiv.appendChild(dButton);
 
   let comment = document.createElement("p");
   comment.appendChild(document.createTextNode(value));
@@ -339,9 +352,6 @@ function createComment(value, number, index) {
   count.appendChild(document.createTextNode(number));
   count.classList.add("count");
 
-  let div = document.createElement("div");
-  div.classList.add("commentContainer");
-
   div.addEventListener("click", () => {
     comment = div.children[0];
     copyToClipboard(comment);
@@ -349,9 +359,9 @@ function createComment(value, number, index) {
 
   div.appendChild(comment);
   div.appendChild(count);
-  div.appendChild(dButton);
 
-  contDiv.appendChild(div);
+  div.appendChild(editDeleteDiv);
+  -contDiv.appendChild(div);
 
   return contDiv;
 }
@@ -367,11 +377,19 @@ create.onclick = () => {
   submitInput.focus();
 };
 
-var myChart;
+/**
+ * Close the modal
+ */
+
+window.addEventListener("click", function (event) {
+  console.log(event.target);
+  if (event.target == modal) modal.style.display = "none";
+});
 
 /**
  * Open the chart
  */
+var myChart;
 openChart.onclick = () => {
   let data = JSON.parse(localStorage.getItem("data"));
   let comments = data[page + "comments𝕕𝕕"] ? data[page + "comments𝕕𝕕"] : [];
@@ -382,7 +400,7 @@ openChart.onclick = () => {
   let final_comments = [];
   let final_counts = [];
 
-  let arrays = sortArrays(comments, counts);
+  sortArrays(comments, counts);
 
   for (let i = 0; i < (comments.length > 6 ? 6 : comments.length); i++) {
     if (comments[i] != null) {
@@ -476,11 +494,11 @@ openChart.onclick = () => {
 /**
  * Close the chart
  */
-window.onclick = function (event) {
+window.addEventListener("click", function (event) {
   if (event.target == chartModal) {
     chartModal.style.display = "none";
   }
-};
+});
 
 /**
  * Sort two arrays together based on a single one

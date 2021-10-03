@@ -416,7 +416,13 @@ openChart.onclick = () => {
       datasets: [
         {
           data: final_counts,
-          backgroundColor: "#71856a",
+          backgroundColor: [
+            "#ff3333",
+            "#ff4f4f",
+            "#ff6e6e",
+            "#ff9191",
+            "#ffb0b0",
+          ],
         },
       ],
     },
@@ -426,7 +432,8 @@ openChart.onclick = () => {
         text: "Graph of Common Issues for " + page,
       },
       legend: {
-        display: false,
+        display: true,
+        position: "right",
       },
       tooltips: {
         callbacks: {

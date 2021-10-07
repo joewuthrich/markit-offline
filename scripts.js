@@ -329,7 +329,7 @@ function createComment(value, number, index) {
   editDeleteDiv.classList.add("editDeleteDiv");
 
   let dButton = document.createElement("p");
-  dButton.appendChild(document.createTextNode(String.fromCharCode("215")));
+  dButton.appendChild(document.createTextNode(String.fromCharCode("10005")));
   dButton.classList.add("deleteX");
   dButton.addEventListener("click", () => {
     removeCommentFromStorage(dButton.parentNode.children[0]);

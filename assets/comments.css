@@ -19,7 +19,7 @@
 
 .tmw-comment {
   color: var(--text-color);
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 400;
   font-family: opensans_regular, Arial;
   padding: 20px;
@@ -39,6 +39,8 @@
   font-weight: 700;
   font-family: opensans_regular, Arial;
   padding-left: 20px;
+  color: var(--text-color);
+  user-select: none;
 }
 
 .tmw-icon {
@@ -50,6 +52,7 @@
 
 .tmw-icon:hover {
   fill: var(--text-hover-color);
+  cursor: pointer;
 }
 
 .tmw-copy-icon {

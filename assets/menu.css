@@ -1,5 +1,6 @@
 .tmw-header-menu-container {
-  background: rgba(27, 100, 158, 1);
+  /* background: rgba(27, 100, 158, 1); */
+  background: var(--menu-background-color);
   width: 70%;
   height: 91px;
   border-bottom-left-radius: 20px;
@@ -22,23 +23,23 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: var(--menu-text-color);
-  fill: var(--menu-text-color);
+  color: rgb(255, 255, 255);
+  fill: rgb(255, 255, 255);
 }
 
 .tmw-menu-element {
   font-family: opensans_semibold, Arial;
   font-size: 1.05em;
   font-weight: 700;
-  color: var(--menu-text-color);
+  color: rgb(255, 255, 255);
   padding: 10px;
   text-align: center;
 }
 
 .tmw-menu-element:hover,
 .tmw-page-name-container:hover {
-  color: var(--menu-text-hover-color);
-  fill: var(--menu-text-hover-color);
+  color: rgb(219, 219, 219);
+  fill: rgb(219, 219, 219);
   cursor: pointer;
 }
 

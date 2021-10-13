@@ -3,8 +3,12 @@
   --container-background-color: rgb(255, 255, 255);
   --text-color: rgb(0, 0, 0);
   --text-hover-color: rgb(80, 80, 80);
-  --menu-text-color: rgb(255, 255, 255);
-  --menu-text-hover-color: rgb(219, 219, 219);
+  --menu-background-color: rgba(27, 100, 158, 1);
+}
+
+::placeholder {
+  color: var(--text-hover-color);
+  opacity: 1;
 }
 
 body {

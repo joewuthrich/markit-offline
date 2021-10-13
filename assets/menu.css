@@ -1,0 +1,54 @@
+.tmw-header-menu-container {
+  background: rgba(27, 100, 158, 1);
+  width: 70%;
+  height: 91px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.tmw-header-menu-inner-container {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+}
+
+.tmw-page-name-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: rgb(255, 255, 255);
+  fill: rgb(255, 255, 255);
+}
+
+.tmw-menu-element {
+  font-family: opensans_semibold, Arial;
+  font-size: 1.05em;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 1);
+  padding: 10px;
+}
+
+.tmw-menu-element:hover,
+.tmw-page-name-container:hover {
+  color: rgb(219, 219, 219);
+  fill: rgb(219, 219, 219);
+  cursor: pointer;
+}
+
+.tmw-main-page-name {
+  font-size: 1.7em;
+  padding-bottom: 3px;
+  color: inherit;
+}
+
+.tmw-dropdown-icon {
+  transform: rotate(90deg);
+  fill: inherit;
+  width: 11px;
+  height: 14px;
+}

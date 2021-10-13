@@ -3,12 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <!-- <link rel="stylesheet" type="text/css" href="./styles.css" /> -->
+    <link rel="stylesheet" type="text/css" href="./assets/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/comments.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/menu.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/entry.css" />
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
     <title>Comment Tracker</title>
   </head>
   <body>
-    <div class="mContainer">
+    <!-- <div class="mContainer">
       <div id="myModal" class="modal">
         <div class="modal-content" id="new-page">
           <input id="nameInput"></input>
@@ -26,11 +30,71 @@
           <canvas id="chart" width="400" height="400"></canvas>
         </div>
       </div>
+
       <div id="menu">
         <p id="create">Create</p>
         <p id="delete">Delete</p>
+      </div> -->
+
+      <div class="tmw-header-menu-container">
+        <div class="tmw-header-menu-inner-container">
+          <div class="tmw-menu-element">NEW PAGE</div>
+          <div class="tmw-menu-element">IMPORT FROM .CSV</div>
+          <div class="tmw-menu-element">VIEW GRAPH</div>
+          <div class="tmw-page-name-container">
+            <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
+            <svg data-layer="9a724ebb-647e-427d-a2be-932a346612f1" preserveAspectRatio="none" 
+            viewBox="8 5 11 14" class="tmw-dropdown-icon">
+              <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
+            </svg>
+          </div>
+          <div class="tmw-menu-element">DARK MODE</div>
+          <div class="tmw-menu-element">EXPORT TO .CSV</div>
+          <div class="tmw-menu-element">DELETE PAGE</div>
+        </div>
       </div>
-      <div id="dropdownContainer">
+
+      <div class="tmw-comment-entry-container">
+        <div class="tmw-comment-entry-area-container">
+          <textarea class="tmw-comment-entry-area" placeholder="¶"></textarea>
+        </div>
+        <div class="tmw-comment-submit-btn">SUBMIT</div>
+      </div>
+
+      <div class="tmw-comment-container">
+        <div class="tmw-comment">
+          Comment goes here, xyz, blah blah.
+        </div>
+        <div class="tmw-icon-container">
+          <svg data-layer="24050ea6-def5-42fc-8362-23b1fb6c1c51" preserveAspectRatio="none" 
+          viewBox="1.9999994039535522 2 23.1578369140625 22" class="tmw-icon tmw-favourite-icon">
+            <path d="M 13.57894515991211 19.68105506896973 L 20.7347354888916 24.00000190734863 
+            L 18.83579063415527 15.86000061035156 L 25.15789413452148 10.38315963745117 L 16.8326301574707 
+            9.676843643188477 L 13.57894515991211 2 L 10.32526111602783 9.676843643188477 L 1.999999403953552 
+            10.38315963745117 L 8.322103500366211 15.86000061035156 L 6.423157215118408 24.00000190734863 
+            L 13.57894515991211 19.68105506896973 Z"></path>
+          </svg>
+          <svg data-layer="c510364e-51cb-42c9-8ed7-791b53439e85" preserveAspectRatio="none" 
+          viewBox="3 2.99750018119812 20 20" class="tmw-icon">
+            <path d="M 3 18.83141326904297 L 3 22.99750137329102 L 7.166088104248047 22.99750137329102 
+            L 19.45326995849609 10.71031665802002 L 15.28718185424805 6.544228553771973 L 3 18.83141326904297 
+            Z M 22.6750431060791 7.488542556762695 C 23.10831642150879 7.055269241333008 23.10831642150879 
+            6.355366706848145 22.6750431060791 5.922093391418457 L 20.07540512084961 3.322455167770386 C 
+            19.64213180541992 2.889181852340698 18.94222831726074 2.889181852340698 18.50895500183105 
+            3.322455167770386 L 16.47590446472168 5.35550594329834 L 20.64199256896973 9.521595001220703 
+            L 22.6750431060791 7.488543510437012 Z"></path>
+          </svg>
+          <svg data-layer="88c460d8-8934-4c4d-9894-7ba998c3a406" preserveAspectRatio="none" 
+          viewBox="5 5 20 20" class="tmw-icon">
+            <path d="M 25 7.014285087585449 L 22.9857120513916 5 L 15 12.98571491241455 L 7.014285087585449 
+            5 L 5 7.014285087585449 L 12.98571491241455 15 L 5 22.9857120513916 L 7.014285087585449 25 L 15 
+            17.01428413391113 L 22.9857120513916 25 L 25 22.9857120513916 L 17.01428413391113 15 L 25 
+            7.014285087585449 Z"></path>
+          </svg>
+        </div>
+      </div>
+
+      <!-- <div id="dropdownContainer">
         <h2 id="dropdown">Page Name</h2>
       </div>
       <div id="dropdownListContainer">
@@ -40,12 +104,13 @@
       <div id="chartContainer">
         <p id="openChart">Chart</p>
       </div>
+      
       <div class="center" id="submissionContainer">
         <textarea rows="5" cols="70" name="textbox" id="textbox"></textarea>
         <div id="submitComment"></div>
       </div>
 
-      <div id="currentComments" class="center"></div>
+      <div id="currentComments" class="center"></div> -->
     </div>
     <script type="module" src="./scripts.js"></script>
   </body>

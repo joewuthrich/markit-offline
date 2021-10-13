@@ -1,0 +1,41 @@
+.tmw-comment-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  box-sizing: content-box;
+  border-radius: 20px;
+  -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
+  width: 70%;
+}
+
+.tmw-comment {
+  color: rgba(0, 0, 0, 1);
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  font-size: 20px;
+  font-weight: 400;
+  font-style: normal;
+  font-family: opensans_regular, Arial;
+  padding: 20px;
+  left: 0;
+}
+
+.tmw-icon-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.tmw-icon {
+  fill: rgba(0, 0, 0, 1);
+  width: 20px;
+  height: 20px;
+  padding-left: 20px;
+}
+
+.tmw-favourite-icon {
+  fill: rgba(212, 175, 55, 1);
+  width: 23.16px;
+  height: 22px;
+}

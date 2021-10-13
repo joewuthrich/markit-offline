@@ -16,19 +16,21 @@ body {
   flex-direction: row;
   align-items: center;
   text-align: center;
+  justify-content: center;
   width: 100%;
   color: rgb(218, 218, 218);
 }
 
 #dropdown {
   user-select: none;
-  font-size: 23px;
+  font-size: 34px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #dropdown:hover {
   color: rgb(255, 255, 255);
   cursor: pointer;
-  font-size: 25px;
 }
 
 #dropdownListContainer {
@@ -99,7 +101,6 @@ body {
   flex-direction: column;
   width: 100%;
   height: 100%;
-  margin: 5px;
 }
 
 .center {
@@ -107,23 +108,22 @@ body {
   justify-content: center;
 }
 
-
 .modal {
   display: none;
-  position: fixed; 
+  position: fixed;
   z-index: 5;
   left: 0;
   top: 0;
-  width: 100%; 
+  width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 .modal-content {
   background-color: #2f2f2f;
-  margin: 15% auto; 
+  margin: 15% auto;
   padding: 20px;
   width: 60%;
   color: whitesmoke;
@@ -143,40 +143,56 @@ body {
   background-color: rgb(43, 47, 51);
 }
 
-#nameSubmit {
+#nameSubmit,
+#editSubmit {
   width: 5%;
   background-color: green;
   z-index: 2;
 }
 
-#nameSubmit:hover {
+#nameSubmit:hover,
+#editSubmit:hover {
   background-color: rgb(0, 145, 0);
   cursor: pointer;
 }
 
+#menu {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  background-color: #2f2f2f;
+  border-bottom-right-radius: 20px;
+}
+
 #create {
   color: rgb(0, 107, 0);
-  font-size: 10px;
+  font-size: 15px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 #create:hover {
   color: green;
-  font-size: 12px;
   cursor: pointer;
 }
 
 #delete {
   color: rgb(212, 0, 0);
-  font-size: 10px;
+  font-size: 15px;
+  margin-right: 20px;
 }
 
 #delete:hover {
   color: red;
-  font-size: 12px;
   cursor: pointer;
 }
 
-textarea {
+#textbox,
+#editInput {
   border-width: 0px;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -191,7 +207,8 @@ textarea {
   -moz-box-shadow: 6px 6px 5px -1px rgba(0, 0, 0, 0.75);
 }
 
-textarea:focus {
+#textbox:focus,
+#editInput:focus {
   outline: none !important;
   background-color: rgb(43, 47, 51);
 }
@@ -230,7 +247,7 @@ textarea:focus {
 p.comment {
   word-wrap: break-word;
   max-width: 70%;
-  padding-left: 5%;
+  padding-left: 3%;
   padding-right: 5%;
   color: whitesmoke;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -247,8 +264,8 @@ div.commentContainer {
   border-radius: 10px;
   background-color: #42474b;
   margin-bottom: 10px;
-  margin-left: 5px;
-  margin-right: 10px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 
 div.commentContainer:hover {
@@ -256,16 +273,28 @@ div.commentContainer:hover {
   background-color: #4b5156;
 }
 
-div.delete {
-  background-color: rgb(121, 0, 0);
-  width: 3%;
-  margin-left: 15px;
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
+p.deleteX {
+  color: rgb(121, 0, 0);
+  margin: 0;
+  font-size: 25px;
+  user-select: none;
+  margin-left: 6px;
 }
 
-div.delete:hover {
-  background-color: rgb(132, 0, 0);
+p.deleteX:hover {
+  color: rgb(191, 3, 3);
+  cursor: pointer;
+}
+
+p.editBtn {
+  color: rgb(128, 128, 128);
+  margin: 0;
+  font-size: 25px;
+  user-select: none;
+}
+
+p.editBtn:hover {
+  color: rgb(181, 181, 181);
   cursor: pointer;
 }
 
@@ -278,7 +307,7 @@ p.count {
   align-self: center;
 }
 
-input.deleteButton {
+input.delete {
   margin-left: 10px;
   height: 30pt;
   margin-left: auto;
@@ -286,6 +315,15 @@ input.deleteButton {
 
 input.copyButton:focus {
   outline: none !important;
+}
+
+div.editDeleteDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 hr.solid {
@@ -297,6 +335,21 @@ hr.solid {
   background-image: -o-linear-gradient(left, #2f3437, lightgray, #2f3437);
   width: 80%;
   max-width: 300px;
+}
+
+#editModal {
+  display: none;
+}
+
+#edit-comment {
+  height: 100px;
+}
+
+#editInput {
+  height: auto !important;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
 }
 
 /* width */
@@ -317,4 +370,15 @@ hr.solid {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: gray;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
+}
+
+@media only screen and (max-width: 1000px) {
+  div.commentContainer {
+    margin-left: 4%;
+    margin-right: 4%;
+  }
 }

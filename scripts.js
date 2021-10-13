@@ -12,6 +12,8 @@ let openChart = document.getElementById("openChart");
 let chart = document.getElementById("chart");
 let chartModal = document.getElementById("chartModal");
 
+let editId = 0;
+
 let commentCount = 0;
 
 let page = "test";
@@ -85,6 +87,12 @@ document.addEventListener("keydown", (e) => {
     addPage(submitInput.value);
 
     modal.style.display = "none";
+  }
+
+  if (document.getElementById("editInput") == document.activeElement && 
+    document.getElementById("editInput").value != "") {
+    e.preventDefault();
+    submitEdit();
   }
 });
 
@@ -322,13 +330,33 @@ function increaseCount(element) {
 function createComment(value, number, index) {
   let contDiv = document.createElement("div");
 
-  let dButton = document.createElement("div");
-  dButton.classList.add("delete");
+  let div = document.createElement("div");
+  div.classList.add("commentContainer");
+
+  let editDeleteDiv = document.createElement("div");
+  editDeleteDiv.classList.add("editDeleteDiv");
+
+  let dButton = document.createElement("p");
+  dButton.appendChild(document.createTextNode(String.fromCharCode("10005")));
+  dButton.classList.add("deleteX");
   dButton.addEventListener("click", () => {
     removeCommentFromStorage(dButton.parentNode.children[0]);
     let commentBox = dButton.parentNode.parentNode;
     commentBox.parentNode.removeChild(commentBox);
   });
+
+  let editButton = document.createElement("p");
+  editButton.appendChild(document.createTextNode(String.fromCharCode("9998")));
+  editButton.classList.add("editBtn");
+  editButton.addEventListener("click", () => {
+    document.getElementById("editModal").style.display = "block";
+    let editInput = document.getElementById("editInput")
+    editId = editButton.parentNode.parentNode.children[0].id
+    editInput.value = editButton.parentNode.parentNode.children[0].innerHTML
+    editInput.focus();
+  });
+  editDeleteDiv.appendChild(editButton);
+  editDeleteDiv.appendChild(dButton);
 
   let comment = document.createElement("p");
   comment.appendChild(document.createTextNode(value));
@@ -339,18 +367,19 @@ function createComment(value, number, index) {
   count.appendChild(document.createTextNode(number));
   count.classList.add("count");
 
-  let div = document.createElement("div");
-  div.classList.add("commentContainer");
-
-  div.addEventListener("click", () => {
+  div.addEventListener("click", (event) => {
     comment = div.children[0];
-    copyToClipboard(comment);
+    if (
+      !event.target.classList.contains("editBtn") &&
+      !event.target.classList.contains("deleteX")
+    )
+      copyToClipboard(comment);
   });
 
   div.appendChild(comment);
   div.appendChild(count);
-  div.appendChild(dButton);
 
+  div.appendChild(editDeleteDiv);
   contDiv.appendChild(div);
 
   return contDiv;
@@ -367,11 +396,17 @@ create.onclick = () => {
   submitInput.focus();
 };
 
-var myChart;
+/**
+ * Close the modal
+ */
+window.addEventListener("click", function (event) {
+  if (event.target == modal) modal.style.display = "none";
+});
 
 /**
  * Open the chart
  */
+var myChart;
 openChart.onclick = () => {
   let data = JSON.parse(localStorage.getItem("data"));
   let comments = data[page + "comments𝕕𝕕"] ? data[page + "comments𝕕𝕕"] : [];
@@ -382,7 +417,7 @@ openChart.onclick = () => {
   let final_comments = [];
   let final_counts = [];
 
-  let arrays = sortArrays(comments, counts);
+  sortArrays(comments, counts);
 
   for (let i = 0; i < (comments.length > 6 ? 6 : comments.length); i++) {
     if (comments[i] != null) {
@@ -398,7 +433,13 @@ openChart.onclick = () => {
       datasets: [
         {
           data: final_counts,
-          backgroundColor: "#71856a",
+          backgroundColor: [
+            "#ff3333",
+            "#ff4f4f",
+            "#ff6e6e",
+            "#ff9191",
+            "#ffb0b0",
+          ],
         },
       ],
     },
@@ -408,7 +449,8 @@ openChart.onclick = () => {
         text: "Graph of Common Issues for " + page,
       },
       legend: {
-        display: false,
+        display: true,
+        position: "right",
       },
       tooltips: {
         callbacks: {
@@ -476,11 +518,42 @@ openChart.onclick = () => {
 /**
  * Close the chart
  */
-window.onclick = function (event) {
+window.addEventListener("click", function (event) {
   if (event.target == chartModal) {
     chartModal.style.display = "none";
   }
-};
+});
+
+/**
+ * Close the edit modal
+ */
+ window.addEventListener("click", function (event) {
+  if (event.target == document.getElementById("editModal")) {
+    document.getElementById("editModal").style.display = "none";
+  }
+});
+
+document.getElementById("editSubmit").addEventListener("click", function () {
+  submitEdit();
+});
+
+/**
+ * Submit the edit
+ */
+function submitEdit() {
+  let value = document.getElementById("editInput").value
+  if (value == "") return
+
+  document.getElementById(editId).innerHTML = value
+
+  let data = JSON.parse(localStorage.getItem("data"));
+  data[page + "comments𝕕𝕕"][editId] = value
+  localStorage.setItem("data", JSON.stringify(data));
+
+  document.getElementById("editInput").value = ""
+  document.getElementById("editModal").style.display = "none";
+}
+
 
 /**
  * Sort two arrays together based on a single one

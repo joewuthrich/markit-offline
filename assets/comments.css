@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: white;
+  background: var(--container-background-color);
   box-sizing: content-box;
   border-radius: 20px;
   -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
@@ -11,8 +11,7 @@
 }
 
 .tmw-comment {
-  color: rgba(0, 0, 0, 1);
-  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+  color: var(--text-color);
   font-size: 20px;
   font-weight: 400;
   font-style: normal;
@@ -28,14 +27,22 @@
 }
 
 .tmw-icon {
-  fill: rgba(0, 0, 0, 1);
+  fill: var(--text-color);
   width: 20px;
   height: 20px;
   padding-left: 20px;
 }
 
+.tmw-icon:hover {
+  fill: var(--text-hover-color);
+}
+
 .tmw-favourite-icon {
-  fill: rgba(212, 175, 55, 1);
   width: 23.16px;
   height: 22px;
+}
+
+.tmw-active-favourite-icon,
+.tmw-favourite-icon:hover {
+  fill: rgba(212, 175, 55, 1);
 }

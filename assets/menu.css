@@ -21,22 +21,22 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: rgb(255, 255, 255);
-  fill: rgb(255, 255, 255);
+  color: var(--menu-text-color);
+  fill: var(--menu-text-color);
 }
 
 .tmw-menu-element {
   font-family: opensans_semibold, Arial;
   font-size: 1.05em;
   font-weight: 700;
-  color: rgba(255, 255, 255, 1);
+  color: var(--menu-text-color);
   padding: 10px;
 }
 
 .tmw-menu-element:hover,
 .tmw-page-name-container:hover {
-  color: rgb(219, 219, 219);
-  fill: rgb(219, 219, 219);
+  color: var(--menu-text-hover-color);
+  fill: var(--menu-text-hover-color);
   cursor: pointer;
 }
 

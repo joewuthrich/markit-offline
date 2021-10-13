@@ -1,5 +1,5 @@
 .tmw-comment-entry-container {
-  background: rgba(255, 255, 255, 1);
+  background: var(--container-background-color);
   -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
   width: 60%;
@@ -16,7 +16,7 @@
   margin-right: 0px;
   height: 145px;
   width: 100%;
-  background-color: rgba(238, 238, 238, 1);
+  background-color: var(--main-background-color);
   border-radius: 20px;
   overflow: none;
   display: flex;
@@ -41,11 +41,11 @@
   font-size: 20px;
   font-weight: 700;
   font-family: opensans_semibold, Arial;
-  color: rgba(0, 0, 0, 1);
+  color: var(--text-color);
   transform: rotate(90deg);
 }
 
 .tmw-comment-submit-btn:hover {
-  color: rgb(80, 80, 80);
+  color: var(--text-hover-color);
   cursor: pointer;
 }

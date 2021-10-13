@@ -1,3 +1,12 @@
+:root {
+  --main-background-color: rgba(238, 238, 238, 1);
+  --container-background-color: rgb(255, 255, 255);
+  --text-color: rgb(0, 0, 0);
+  --text-hover-color: rgb(80, 80, 80);
+  --menu-text-color: rgb(255, 255, 255);
+  --menu-text-hover-color: rgb(219, 219, 219);
+}
+
 body {
   font-family: "Open Sans", serif;
   margin: 0;
@@ -10,7 +19,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background-color: rgba(238, 238, 238, 1);
+  background-color: var(--main-background-color);
 }
 
 @font-face {

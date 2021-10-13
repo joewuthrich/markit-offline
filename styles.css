@@ -143,13 +143,15 @@ body {
   background-color: rgb(43, 47, 51);
 }
 
-#nameSubmit {
+#nameSubmit,
+#editSubmit {
   width: 5%;
   background-color: green;
   z-index: 2;
 }
 
-#nameSubmit:hover {
+#nameSubmit:hover,
+#editSubmit:hover {
   background-color: rgb(0, 145, 0);
   cursor: pointer;
 }
@@ -189,7 +191,8 @@ body {
   cursor: pointer;
 }
 
-textarea {
+#textbox,
+#editInput {
   border-width: 0px;
   padding: 20px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -204,7 +207,8 @@ textarea {
   -moz-box-shadow: 6px 6px 5px -1px rgba(0, 0, 0, 0.75);
 }
 
-textarea:focus {
+#textbox:focus,
+#editInput:focus {
   outline: none !important;
   background-color: rgb(43, 47, 51);
 }
@@ -318,9 +322,8 @@ div.editDeleteDiv {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  margin-left: 15px;
+  margin-left: 10px;
   margin-right: 10px;
-  right: 0;
 }
 
 hr.solid {
@@ -332,6 +335,21 @@ hr.solid {
   background-image: -o-linear-gradient(left, #2f3437, lightgray, #2f3437);
   width: 80%;
   max-width: 300px;
+}
+
+#editModal {
+  display: none;
+}
+
+#edit-comment {
+  height: 100px;
+}
+
+#editInput {
+  height: auto !important;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
 }
 
 /* width */
@@ -352,6 +370,10 @@ hr.solid {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: gray;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent;
 }
 
 @media only screen and (max-width: 1000px) {

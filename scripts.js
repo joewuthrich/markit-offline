@@ -12,6 +12,8 @@ let openChart = document.getElementById("openChart");
 let chart = document.getElementById("chart");
 let chartModal = document.getElementById("chartModal");
 
+let editId = 0;
+
 let commentCount = 0;
 
 let page = "test";
@@ -85,6 +87,12 @@ document.addEventListener("keydown", (e) => {
     addPage(submitInput.value);
 
     modal.style.display = "none";
+  }
+
+  if (document.getElementById("editInput") == document.activeElement && 
+    document.getElementById("editInput").value != "") {
+    e.preventDefault();
+    submitEdit();
   }
 });
 
@@ -340,6 +348,13 @@ function createComment(value, number, index) {
   let editButton = document.createElement("p");
   editButton.appendChild(document.createTextNode(String.fromCharCode("9998")));
   editButton.classList.add("editBtn");
+  editButton.addEventListener("click", () => {
+    document.getElementById("editModal").style.display = "block";
+    let editInput = document.getElementById("editInput")
+    editId = editButton.parentNode.parentNode.children[0].id
+    editInput.value = editButton.parentNode.parentNode.children[0].innerHTML
+    editInput.focus();
+  });
   editDeleteDiv.appendChild(editButton);
   editDeleteDiv.appendChild(dButton);
 
@@ -352,16 +367,20 @@ function createComment(value, number, index) {
   count.appendChild(document.createTextNode(number));
   count.classList.add("count");
 
-  div.addEventListener("click", () => {
+  div.addEventListener("click", (event) => {
     comment = div.children[0];
-    copyToClipboard(comment);
+    if (
+      !event.target.classList.contains("editBtn") &&
+      !event.target.classList.contains("deleteX")
+    )
+      copyToClipboard(comment);
   });
 
   div.appendChild(comment);
   div.appendChild(count);
 
   div.appendChild(editDeleteDiv);
-  -contDiv.appendChild(div);
+  contDiv.appendChild(div);
 
   return contDiv;
 }
@@ -380,9 +399,7 @@ create.onclick = () => {
 /**
  * Close the modal
  */
-
 window.addEventListener("click", function (event) {
-  console.log(event.target);
   if (event.target == modal) modal.style.display = "none";
 });
 
@@ -506,6 +523,37 @@ window.addEventListener("click", function (event) {
     chartModal.style.display = "none";
   }
 });
+
+/**
+ * Close the edit modal
+ */
+ window.addEventListener("click", function (event) {
+  if (event.target == document.getElementById("editModal")) {
+    document.getElementById("editModal").style.display = "none";
+  }
+});
+
+document.getElementById("editSubmit").addEventListener("click", function () {
+  submitEdit();
+});
+
+/**
+ * Submit the edit
+ */
+function submitEdit() {
+  let value = document.getElementById("editInput").value
+  if (value == "") return
+
+  document.getElementById(editId).innerHTML = value
+
+  let data = JSON.parse(localStorage.getItem("data"));
+  data[page + "comments𝕕𝕕"][editId] = value
+  localStorage.setItem("data", JSON.stringify(data));
+
+  document.getElementById("editInput").value = ""
+  document.getElementById("editModal").style.display = "none";
+}
+
 
 /**
  * Sort two arrays together based on a single one

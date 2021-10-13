@@ -56,12 +56,14 @@
 
       <div class="tmw-comment-entry-container">
         <div class="tmw-comment-entry-area-container">
-          <textarea class="tmw-comment-entry-area" placeholder="¶"></textarea>
+          <textarea id="tmw-comment-entry-area" placeholder="¶"></textarea>
         </div>
-        <div class="tmw-comment-submit-btn">SUBMIT</div>
+        <div id="tmw-comment-submit-btn">SUBMIT</div>
       </div>
 
-      <div class="tmw-comment-container">
+      <div id="tmw-comment-containers-outer"></div>
+
+      <!-- <div class="tmw-comment-container">
         <div class="tmw-comment">
           Comment goes here, xyz, blah blah.
         </div>
@@ -161,7 +163,7 @@
             7.014285087585449 Z"></path>
           </svg>
         </div>
-      </div>
+      </div> -->
 
 
 
@@ -185,5 +187,6 @@
     </div>
     <!-- <script type="module" src="./scripts.js"></script> -->
     <script type="module" src="./scripts/extras.js"></script>
+    <script type="module" src="./scripts/add-comments.js"></script>
   </body>
 </html>

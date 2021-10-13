@@ -33,6 +33,7 @@
   color: rgb(255, 255, 255);
   padding: 10px;
   text-align: center;
+  user-select: none;
 }
 
 .tmw-menu-element:hover,

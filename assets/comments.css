@@ -68,3 +68,9 @@
 .tmw-favourite-icon:hover {
   fill: rgba(212, 175, 55, 1);
 }
+
+@media screen and (max-width: 1450px) {
+  .tmw-comment-container {
+    width: 95%;
+  }
+}

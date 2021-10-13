@@ -1,5 +1,4 @@
 .tmw-header-menu-container {
-  /* background: rgba(27, 100, 158, 1); */
   background: var(--menu-background-color);
   width: 70%;
   height: 91px;
@@ -54,4 +53,10 @@
   fill: inherit;
   width: 11px;
   height: 14px;
+}
+
+@media screen and (max-width: 1450px) {
+  .tmw-header-menu-container {
+    width: 95%;
+  }
 }

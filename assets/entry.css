@@ -49,3 +49,9 @@
   color: var(--text-hover-color);
   cursor: pointer;
 }
+
+@media screen and (max-width: 1450px) {
+  .tmw-comment-entry-container {
+    width: 80%;
+  }
+}

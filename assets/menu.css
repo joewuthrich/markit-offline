@@ -8,6 +8,7 @@
   justify-content: center;
   align-items: center;
   margin-bottom: 30px;
+  overflow: hidden;
 }
 
 .tmw-header-menu-inner-container {
@@ -31,6 +32,7 @@
   font-weight: 700;
   color: var(--menu-text-color);
   padding: 10px;
+  text-align: center;
 }
 
 .tmw-menu-element:hover,

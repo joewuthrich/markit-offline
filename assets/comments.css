@@ -2,6 +2,7 @@
   width: 71%;
   overflow-y: auto;
   overflow-x: visible;
+  flex: 1 1 auto;
 }
 
 .tmw-comment-container {
@@ -76,6 +77,10 @@
 .tmw-active-favourite-icon,
 .tmw-favourite-icon:hover {
   fill: rgba(212, 175, 55, 1);
+}
+
+.tmw-active-favourite-icon:hover {
+  fill: var(--text-hover-color);
 }
 
 @media screen and (max-width: 1450px) {

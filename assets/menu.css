@@ -1,7 +1,6 @@
 .tmw-header-menu-container {
   background: var(--menu-background-color);
   width: 70%;
-  height: 91px;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   display: flex;
@@ -28,7 +27,7 @@
 
 .tmw-menu-element {
   font-family: opensans_semibold, Arial;
-  font-size: 1.05em;
+  font-size: 1.1vw;
   font-weight: 700;
   color: rgb(255, 255, 255);
   padding: 10px;
@@ -44,7 +43,7 @@
 }
 
 .tmw-main-page-name {
-  font-size: 1.7em;
+  font-size: 1.3vw;
   padding-bottom: 3px;
   color: inherit;
 }
@@ -52,8 +51,8 @@
 .tmw-dropdown-icon {
   transform: rotate(90deg);
   fill: inherit;
-  width: 11px;
-  height: 14px;
+  width: 0.7vw;
+  padding-right: 10px;
 }
 
 @media screen and (max-width: 1450px) {

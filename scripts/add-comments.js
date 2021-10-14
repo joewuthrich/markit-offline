@@ -1,29 +1,33 @@
 let textInputElement = document.getElementById("tmw-comment-entry-area");
 let commentCount = 0;
-let commentList = []
+let commentList = [];
 
 class Comment extends HTMLElement {
-    constructor(id, text, count = 0) {
-        super();
+  constructor(id, text, count = 0) {
+    super();
 
-        this.id = id
-        this.text = text;
-        this.count = count;
-        this.favourite = false;
+    this.id = id;
+    this.text = text;
+    this.count = count;
+    this.favourite = false;
 
-        this.classList.add("tmw-comment-container");
-        this.id = this.id
-        this.addEventListener("click", function() {
-            navigator.clipboard.writeText(this.children[0].textContent).then(() => {
-                this.count++;
-                this.children[1].children[1].innerHTML = this.count;
-            },() => {});
-        });
-        
-        this.innerHTML = `
-        <div class="tmw-comment">`
-        + text +
-        `</div>
+    this.classList.add("tmw-comment-container");
+    this.id = this.id;
+    this.addEventListener("click", function () {
+      navigator.clipboard.writeText(this.children[0].textContent).then(
+        () => {
+          this.count++;
+          this.children[1].children[1].innerHTML = this.count;
+        },
+        () => {}
+      );
+    });
+
+    this.innerHTML =
+      `
+        <div class="tmw-comment">` +
+      text +
+      `</div>
         <div class="tmw-icon-container">
             <svg data-layer="713e396b-e42b-4c48-8333-7cf0799901da" preserveAspectRatio="none" 
             viewBox="1 1 20 20" class="tmw-icon tmw-copy-icon">
@@ -40,9 +44,9 @@ class Comment extends HTMLElement {
                 15.54545497894287 L 6.454545497894287 2.818181753158569 L 19.18181991577148 2.818181753158569 L 
                 19.18181991577148 15.54545497894287 Z"></path>
             </svg>
-            <div class="tmw-comment-count">`
-            + count +
-            `</div>
+            <div class="tmw-comment-count">` +
+      count +
+      `</div>
             <svg data-layer="7aa50cf5-5258-4e5e-8822-cf76ef80e349" preserveAspectRatio="none" 
             viewBox="2 2 23.1578369140625 22" class="tmw-icon tmw-favourite-icon">
                 <path d="M 25.15789413452148 10.38315773010254 L 16.8326301574707 9.665263175964355 L 
@@ -74,79 +78,87 @@ class Comment extends HTMLElement {
             </svg>
         </div>`;
 
-        var favBtn = this.children[1].children[2]
-        favBtn.addEventListener("click", () => {
-            this.toggleFavourite()
-        });
-        var editBtn = this.children[1].children[3]
-        var deleteBtn = this.children[1].children[4]
-        deleteBtn.addEventListener("click", () => {
-            this.delete();
-        });
-        document.getElementById("tmw-comment-containers-outer").appendChild(this);
-    }
+    var favBtn = this.children[1].children[2];
+    favBtn.addEventListener("click", () => {
+      this.toggleFavourite();
+    });
+    var editBtn = this.children[1].children[3];
+    var deleteBtn = this.children[1].children[4];
+    deleteBtn.addEventListener("click", () => {
+      this.delete();
+    });
+    document.getElementById("tmw-comment-containers-outer").appendChild(this);
+  }
 
-    getHTMLElement() {
-        return this;
-    }
+  getHTMLElement() {
+    return this;
+  }
 
-    toggleFavourite() {
-        var favElement = this.children[1].children[2]
-        if (this.favourite) {
-            favElement.classList.remove("tmw-active-favourite-icon");
-            favElement.children[0].setAttribute("d", "M 25.15789413452148 10.38315773010254 L 16.8326301574707 " +
-            "9.665263175964355 L 13.57894802093506 2 L 10.32526302337646 9.67684268951416 L 2 10.38315773010254 L " +
-            "8.322105407714844 15.85999965667725 L 6.423157691955566 24 L 13.57894802093506 19.68105316162109 L " +
-            "20.7347354888916 24 L 18.84736824035645 15.85999965667725 L 25.15789413452148 10.38315773010254 Z M " +
-            "13.57894802093506 17.51578903198242 L 9.225262641906738 20.14420890808105 L 10.38315773010254 " +
-            "15.18842029571533 L 6.538947105407715 11.85368347167969 L 11.61052703857422 11.41368389129639 L " +
-            "13.57894802093506 6.747367858886719 L 15.55894756317139 11.42526245117188 L 20.63052558898926 " +
-            "11.86526298522949 L 16.78631591796875 15.19999980926514 L 17.94421005249023 20.15578842163086 L " +
-            "13.57894802093506 17.51578903198242 Z");
-            this.favourite = false;
-        }
-        else {
-            favElement.classList.add("tmw-active-favourite-icon");
-            favElement.children[0].setAttribute("d", "M 13.57894515991211 19.68105506896973 L 20.7347354888916 " +
-            "24.00000190734863 L 18.83579063415527 15.86000061035156 L 25.15789413452148 10.38315963745117 L " +
-            "16.8326301574707 9.676843643188477 L 13.57894515991211 2 L 10.32526111602783 9.676843643188477 L " +
-            "1.999999403953552 10.38315963745117 L 8.322103500366211 15.86000061035156 L 6.423157215118408 " +
-            "24.00000190734863 L 13.57894515991211 19.68105506896973 Z");
-            this.favourite = true;
-        }
-        
+  toggleFavourite() {
+    var favElement = this.children[1].children[2];
+    if (this.favourite) {
+      favElement.classList.remove("tmw-active-favourite-icon");
+      favElement.children[0].setAttribute(
+        "d",
+        "M 25.15789413452148 10.38315773010254 L 16.8326301574707 " +
+          "9.665263175964355 L 13.57894802093506 2 L 10.32526302337646 9.67684268951416 L 2 10.38315773010254 L " +
+          "8.322105407714844 15.85999965667725 L 6.423157691955566 24 L 13.57894802093506 19.68105316162109 L " +
+          "20.7347354888916 24 L 18.84736824035645 15.85999965667725 L 25.15789413452148 10.38315773010254 Z M " +
+          "13.57894802093506 17.51578903198242 L 9.225262641906738 20.14420890808105 L 10.38315773010254 " +
+          "15.18842029571533 L 6.538947105407715 11.85368347167969 L 11.61052703857422 11.41368389129639 L " +
+          "13.57894802093506 6.747367858886719 L 15.55894756317139 11.42526245117188 L 20.63052558898926 " +
+          "11.86526298522949 L 16.78631591796875 15.19999980926514 L 17.94421005249023 20.15578842163086 L " +
+          "13.57894802093506 17.51578903198242 Z"
+      );
+      this.favourite = false;
+    } else {
+      favElement.classList.add("tmw-active-favourite-icon");
+      favElement.children[0].setAttribute(
+        "d",
+        "M 13.57894515991211 19.68105506896973 L 20.7347354888916 " +
+          "24.00000190734863 L 18.83579063415527 15.86000061035156 L 25.15789413452148 10.38315963745117 L " +
+          "16.8326301574707 9.676843643188477 L 13.57894515991211 2 L 10.32526111602783 9.676843643188477 L " +
+          "1.999999403953552 10.38315963745117 L 8.322103500366211 15.86000061035156 L 6.423157215118408 " +
+          "24.00000190734863 L 13.57894515991211 19.68105506896973 Z"
+      );
+      this.favourite = true;
     }
+    this.count--;
+  }
 
-    delete() {
-        this.remove();
-    }
+  delete() {
+    this.remove();
+  }
 
-    toString() {
-        return this.text
-    }
+  toString() {
+    return this.text;
+  }
 }
 
-customElements.define('defined-comment', Comment);
+customElements.define("defined-comment", Comment);
 
-
-document.addEventListener("keydown", function(e) {
-    if (document.activeElement != textInputElement || e.key != 'Enter' || e.shiftKey) 
-        return
-    addComment();
+document.addEventListener("keydown", function (e) {
+  if (
+    document.activeElement != textInputElement ||
+    e.key != "Enter" ||
+    e.shiftKey
+  )
+    return;
+  addComment();
 });
 
-document.getElementById("tmw-comment-submit-btn").addEventListener("click", function() {
-    if (textInputElement.value == "")
-        return
+document
+  .getElementById("tmw-comment-submit-btn")
+  .addEventListener("click", function () {
+    if (textInputElement.value == "") return;
     for (let comment of commentList) {
-        if (textInputElement.value == comment.toString())
-            return
+      if (textInputElement.value == comment.toString()) return;
     }
     addComment();
-})
+  });
 
 function addComment() {
-    commentList.push(new Comment(commentCount++, textInputElement.value, 0))
-    textInputElement.value = "";
-    textInputElement.blur();
+  commentList.push(new Comment(commentCount++, textInputElement.value, 0));
+  textInputElement.value = "";
+  textInputElement.blur();
 }

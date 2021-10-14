@@ -24,6 +24,7 @@
 
 #tmw-comment-entry-area {
   border: none;
+  color: var(--text-color);
   background-color: inherit;
   resize: none;
   border-radius: 20px;

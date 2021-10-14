@@ -1,16 +1,40 @@
+let textInputElement = document.getElementById("tmw-comment-entry-area");
+
+document.addEventListener("keydown", function(e) {
+    if (document.activeElement != textInputElement) 
+        return
+    if (e.key != 'Enter')
+        return
+    if (e.shiftKey)
+        return
+    preAddComment();
+});
+
 document.getElementById("tmw-comment-submit-btn").addEventListener("click", function() {
-    addComment(document.getElementById("tmw-comment-entry-area").value, true);
+    if (textInputElement.value == "")
+        return
+    preAddComment();
 })
 
-function addComment(text, record) {
-    document.getElementById("tmw-comment-containers-outer").innerHTML += `
-    <div class="tmw-comment-container">
-        <div class="tmw-comment">`
-            + text +
-        `</div>
-        <div class="tmw-icon-container">
-            <svg data-layer="713e396b-e42b-4c48-8333-7cf0799901da" preserveAspectRatio="none" 
-            viewBox="1 1 20 20" class="tmw-icon tmw-copy-icon">
+function preAddComment() {
+    addComment(textInputElement.value, 0);
+    textInputElement.value = "";
+    textInputElement.blur();
+}
+
+function addComment(text, count, record = true) {
+    let commentContainer = document.createElement("div");
+    commentContainer.addEventListener("click", function() {
+        navigator.clipboard.writeText(this.children[0].textContent).then(() => {},() => {});
+    });
+    commentContainer.classList.add("tmw-comment-container")
+    commentContainer.innerHTML = `
+    <div class="tmw-comment">`
+    + text +
+    `</div>
+    <div class="tmw-icon-container">
+        <svg data-layer="713e396b-e42b-4c48-8333-7cf0799901da" preserveAspectRatio="none" 
+        viewBox="1 1 20 20" class="tmw-icon tmw-copy-icon">
             <path d="M 2.818181753158569 4.636363506317139 L 1 4.636363506317139 L 1 19.18181991577148 C 
             1 20.18181991577148 1.818181872367859 21.00000190734863 2.818181753158569 21.00000190734863 L 
             17.36363792419434 21.00000190734863 L 17.36363792419434 19.18181991577148 L 2.818181753158569 
@@ -23,10 +47,12 @@ function addComment(text, record) {
             20.18181991577148 1 19.18181991577148 1 Z M 19.18181991577148 15.54545497894287 L 6.454545497894287 
             15.54545497894287 L 6.454545497894287 2.818181753158569 L 19.18181991577148 2.818181753158569 L 
             19.18181991577148 15.54545497894287 Z"></path>
-            </svg>
-            <div class="tmw-comment-count">2</div>
-            <svg data-layer="7aa50cf5-5258-4e5e-8822-cf76ef80e349" preserveAspectRatio="none" 
-            viewBox="2 2 23.1578369140625 22" class="tmw-icon tmw-favourite-icon">
+        </svg>
+        <div class="tmw-comment-count">`
+        + count +
+        `</div>
+        <svg data-layer="7aa50cf5-5258-4e5e-8822-cf76ef80e349" preserveAspectRatio="none" 
+        viewBox="2 2 23.1578369140625 22" class="tmw-icon tmw-favourite-icon">
             <path d="M 25.15789413452148 10.38315773010254 L 16.8326301574707 9.665263175964355 L 
             13.57894802093506 2 L 10.32526302337646 9.67684268951416 L 2 10.38315773010254 L 8.322105407714844 
             15.85999965667725 L 6.423157691955566 24 L 13.57894802093506 19.68105316162109 L 20.7347354888916 24 
@@ -36,9 +62,9 @@ function addComment(text, record) {
             6.747367858886719 L 15.55894756317139 11.42526245117188 L 20.63052558898926 11.86526298522949 L 
             16.78631591796875 15.19999980926514 L 17.94421005249023 20.15578842163086 L 13.57894802093506 
             17.51578903198242 Z"></path>
-            </svg>
-            <svg data-layer="c510364e-51cb-42c9-8ed7-791b53439e85" preserveAspectRatio="none" 
-            viewBox="3 2.99750018119812 20 20" class="tmw-icon">
+        </svg>
+        <svg data-layer="c510364e-51cb-42c9-8ed7-791b53439e85" preserveAspectRatio="none" 
+        viewBox="3 2.99750018119812 20 20" class="tmw-icon">
             <path d="M 3 18.83141326904297 L 3 22.99750137329102 L 7.166088104248047 22.99750137329102 
             L 19.45326995849609 10.71031665802002 L 15.28718185424805 6.544228553771973 L 3 18.83141326904297 
             Z M 22.6750431060791 7.488542556762695 C 23.10831642150879 7.055269241333008 23.10831642150879 
@@ -46,14 +72,14 @@ function addComment(text, record) {
             19.64213180541992 2.889181852340698 18.94222831726074 2.889181852340698 18.50895500183105 
             3.322455167770386 L 16.47590446472168 5.35550594329834 L 20.64199256896973 9.521595001220703 
             L 22.6750431060791 7.488543510437012 Z"></path>
-            </svg>
-            <svg data-layer="88c460d8-8934-4c4d-9894-7ba998c3a406" preserveAspectRatio="none" 
-            viewBox="5 5 20 20" class="tmw-icon">
+        </svg>
+        <svg data-layer="88c460d8-8934-4c4d-9894-7ba998c3a406" preserveAspectRatio="none" 
+        viewBox="5 5 20 20" class="tmw-icon">
             <path d="M 25 7.014285087585449 L 22.9857120513916 5 L 15 12.98571491241455 L 7.014285087585449 
             5 L 5 7.014285087585449 L 12.98571491241455 15 L 5 22.9857120513916 L 7.014285087585449 25 L 15 
             17.01428413391113 L 22.9857120513916 25 L 25 22.9857120513916 L 17.01428413391113 15 L 25 
             7.014285087585449 Z"></path>
-            </svg>
-        </div>
+        </svg>
     </div>`;
+    document.getElementById("tmw-comment-containers-outer").appendChild(commentContainer);
 }

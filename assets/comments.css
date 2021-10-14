@@ -23,6 +23,7 @@
 .tmw-comment-container:hover {
   fill: var(--text-color);
   background: var(--main-background-color);
+  cursor: pointer;
 }
 
 .tmw-comment {

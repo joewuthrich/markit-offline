@@ -1,0 +1,12 @@
+#tmw-modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: var(--modal-background-color);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

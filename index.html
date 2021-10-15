@@ -8,10 +8,11 @@
     <link rel="stylesheet" type="text/css" href="./assets/comments.css" />
     <link rel="stylesheet" type="text/css" href="./assets/menu.css" />
     <link rel="stylesheet" type="text/css" href="./assets/entry.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/modal.css" />
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
     <title>Comment Tracker</title>
   </head>
-  <body>
+  <body id="tmw-body">
     <!-- <div class="mContainer">
       <div id="myModal" class="modal">
         <div class="modal-content" id="new-page">
@@ -35,7 +36,14 @@
         <p id="create">Create</p>
         <p id="delete">Delete</p>
       </div> -->
-
+      <!-- <div id="tmw-modal-container">
+        <div class="tmw-comment-entry-container tmw-modal-entry-container">
+          <div class="tmw-comment-entry-area-container">
+            <textarea id="tmw-modal-entry-area" class="tmw-comment-entry-area" placeholder="¶"></textarea>
+          </div>
+          <div id="tmw-submit-modal-text" class="tmw-comment-submit-btn ">SUBMIT</div>
+        </div>
+      </div> -->
       <div class="tmw-header-menu-container">
         <div class="tmw-header-menu-inner-container">
           <div class="tmw-menu-element">NEW PAGE</div>
@@ -56,9 +64,9 @@
 
       <div class="tmw-comment-entry-container">
         <div class="tmw-comment-entry-area-container">
-          <textarea id="tmw-comment-entry-area" placeholder="¶"></textarea>
+          <textarea id="tmw-comment-entry-area" class="tmw-comment-entry-area" placeholder="¶"></textarea>
         </div>
-        <div id="tmw-comment-submit-btn">SUBMIT</div>
+        <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">SUBMIT</div>
       </div>
 
       <div id="tmw-comment-containers-outer"></div>
@@ -189,5 +197,6 @@
     <script type="module" src="./scripts/extras.js"></script>
     <script type="module" src="./scripts/add-comments.js"></script>
     <script type="module" src="./scripts/scripts.js"></script>
+    <script type="module" src="./scripts/modal.js"></script>
   </body>
 </html>

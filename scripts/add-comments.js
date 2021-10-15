@@ -1,3 +1,5 @@
+import EditCommentModal from "./modal.js"
+
 let textInputElement = document.getElementById("tmw-comment-entry-area");
 let commentCount = 0;
 let commentList = [];
@@ -83,6 +85,10 @@ class Comment extends HTMLElement {
       this.toggleFavourite();
     });
     var editBtn = this.children[1].children[3];
+    editBtn.addEventListener("click", () => {
+      new EditCommentModal(this.id, this.text);
+      this.count--;
+    });
     var deleteBtn = this.children[1].children[4];
     deleteBtn.addEventListener("click", () => {
       this.delete();
@@ -124,6 +130,24 @@ class Comment extends HTMLElement {
       this.favourite = true;
     }
     this.count--;
+    let children = [].slice.call(document.getElementById("tmw-comment-containers-outer").childNodes)
+    children.sort(
+      function (comment1, comment2) {
+        if (comment1.favourite && comment2.favourite) {
+          if (comment1.id < comment2.id) return -1
+          if (comment1.id > comment2.id) return 1
+        }
+        else if (comment1.favourite) return -1
+        else if (comment2.favourite) return 1
+        else {
+          if (comment1.id < comment2.id) return -1
+          if (comment1.id > comment2.id) return 1
+        }
+    }).forEach(child => document.getElementById("tmw-comment-containers-outer").appendChild(child))
+  }
+
+  updateText(text) {
+    this.children[0].innerHTML = text;
   }
 
   delete() {
@@ -137,7 +161,7 @@ class Comment extends HTMLElement {
 
 customElements.define("defined-comment", Comment);
 
-document.addEventListener("keydown", function (e) {
+textInputElement.addEventListener("keydown", function (e) {
   if (
     document.activeElement != textInputElement ||
     e.key != "Enter" ||
@@ -162,3 +186,4 @@ function addComment() {
   textInputElement.value = "";
   textInputElement.blur();
 }
+

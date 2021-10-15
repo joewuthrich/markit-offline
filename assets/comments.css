@@ -36,6 +36,7 @@
   left: 0;
   user-select: none;
   word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .tmw-icon-container {

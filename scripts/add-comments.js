@@ -28,7 +28,9 @@ document
   });
 
 function addComment() {
-  defaultPage.addComment(textInputElement.value);
-  textInputElement.value = "";
-  textInputElement.blur();
+  var response = defaultPage.addComment(textInputElement.value);
+  if (response) {
+    textInputElement.value = "";
+    textInputElement.blur();
+  }
 }

@@ -16,17 +16,20 @@ export default class CommentPage extends HTMLElement {
     commentList.forEach((value) => {
       if (!(value in comments)) comments.append(value);
     });
+    var biggestID = 0;
     for (var comment of comments) {
+      biggestID = comment[0];
       this.appendChild(
         new Comment(comment[0], comment[1], comment[2], comment[3])
       );
     }
     data[name + "𝕕𝕕"] = comments;
     this.sortComments();
+    this.commentCount = parseInt(biggestID) + 1;
     localStorage.setItem("comment-data", JSON.stringify(data));
   }
 
-  addComment(comment, commentCount = 0) {
+  addComment(comment) {
     if (comment == "") return false;
     var commentList = this.children;
     for (let prevComment of commentList)
@@ -36,15 +39,16 @@ export default class CommentPage extends HTMLElement {
       () => {}
     );
     let data = JSON.parse(localStorage.getItem("comment-data"));
-    comment = new Comment(commentCount++, comment, 1);
+    comment = new Comment(this.commentCount++, comment);
     data[this.name + "𝕕𝕕"].push(comment.toArray());
     this.appendChild(comment);
     localStorage.setItem("comment-data", JSON.stringify(data));
     return true;
   }
 
-  removeComment(id) {
-    this.commentList.splice(id, 1);
+  removeComment(comment) {
+    this.removeChild(comment);
+    this.updateStorage();
   }
 
   setCurrent() {
@@ -70,6 +74,7 @@ export default class CommentPage extends HTMLElement {
         }
       })
       .forEach((child) => this.appendChild(child));
+    this.updateStorage();
   }
 
   contains(text) {
@@ -77,6 +82,14 @@ export default class CommentPage extends HTMLElement {
       if (comment.text == text) return true;
     }
     return false;
+  }
+
+  updateStorage() {
+    let data = JSON.parse(localStorage.getItem("comment-data"));
+    data[this.name + "𝕕𝕕"] = Array.from(this.children, (item) =>
+      item.toArray()
+    );
+    localStorage.setItem("comment-data", JSON.stringify(data));
   }
 }
 

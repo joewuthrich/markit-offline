@@ -7,7 +7,7 @@ export default class Comment extends HTMLElement {
     this.id = id;
     this.text = text;
     this.count = count;
-    this.favourite = favourite;
+    this.favourite = false;
 
     this.classList.add("tmw-comment-container");
     this.id = this.id;
@@ -24,6 +24,7 @@ export default class Comment extends HTMLElement {
         () => {
           this.count++;
           this.children[1].children[1].innerHTML = this.count;
+          this.parentElement.updateStorage();
         },
         () => {}
       );
@@ -94,16 +95,16 @@ export default class Comment extends HTMLElement {
     });
     var deleteBtn = this.children[1].children[4];
     deleteBtn.addEventListener("click", () => {
-      this.delete();
+      this.parentElement.removeComment(this);
     });
-    document.getElementById("tmw-comment-containers-outer").appendChild(this);
+    if (favourite) this.toggleFavourite(true);
   }
 
   getHTMLElement() {
     return this;
   }
 
-  toggleFavourite() {
+  toggleFavourite(load = false) {
     var favElement = this.children[1].children[2];
     if (this.favourite) {
       favElement.classList.remove("tmw-active-favourite-icon");
@@ -132,16 +133,13 @@ export default class Comment extends HTMLElement {
       );
       this.favourite = true;
     }
-    this.parentElement.sortComments();
+    if (!load) this.parentElement.sortComments();
   }
 
   updateText(text) {
     this.text = text;
     this.children[0].innerHTML = text;
-  }
-
-  delete() {
-    this.remove();
+    this.parentElement.updateStorage();
   }
 
   toString() {

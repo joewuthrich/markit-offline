@@ -1,35 +1,39 @@
-import EditCommentModal from "./modals.js"
+import EditCommentModal from "./modals.js";
 
 export default class Comment extends HTMLElement {
-    constructor(id, text, count = 0) {
-      super();
-  
-      this.id = id;
-      this.text = text;
-      this.count = count;
-      this.favourite = false;
-  
-      this.classList.add("tmw-comment-container");
-      this.id = this.id;
-      this.addEventListener("click", function (event) {
-        var icons = this.children[1].children;
-        if (event.target == icons[2] || event.target == icons[3] || event.target == icons[4] || 
-            event.target == icons[2].children[0])
-            return
-        navigator.clipboard.writeText(this.children[0].textContent).then(
-          () => {
-            this.count++;
-            this.children[1].children[1].innerHTML = this.count;
-          },
-          () => {}
-        );
-      });
-  
-      this.innerHTML =
-        `
+  constructor(id, text, count = 0, favourite = false) {
+    super();
+
+    this.id = id;
+    this.text = text;
+    this.count = count;
+    this.favourite = favourite;
+
+    this.classList.add("tmw-comment-container");
+    this.id = this.id;
+    this.addEventListener("click", function (event) {
+      var icons = this.children[1].children;
+      if (
+        event.target == icons[2] ||
+        event.target == icons[3] ||
+        event.target == icons[4] ||
+        event.target == icons[2].children[0]
+      )
+        return;
+      navigator.clipboard.writeText(this.children[0].textContent).then(
+        () => {
+          this.count++;
+          this.children[1].children[1].innerHTML = this.count;
+        },
+        () => {}
+      );
+    });
+
+    this.innerHTML =
+      `
           <div class="tmw-comment">` +
-        text +
-        `</div>
+      text +
+      `</div>
           <div class="tmw-icon-container">
               <svg data-layer="713e396b-e42b-4c48-8333-7cf0799901da" preserveAspectRatio="none" 
               viewBox="1 1 20 20" class="tmw-icon tmw-copy-icon">
@@ -47,8 +51,8 @@ export default class Comment extends HTMLElement {
                   19.18181991577148 15.54545497894287 Z"></path>
               </svg>
               <div class="tmw-comment-count">` +
-        count +
-        `</div>
+      count +
+      `</div>
               <svg data-layer="7aa50cf5-5258-4e5e-8822-cf76ef80e349" preserveAspectRatio="none" 
               viewBox="2 2 23.1578369140625 22" class="tmw-icon tmw-favourite-icon">
                   <path d="M 25.15789413452148 10.38315773010254 L 16.8326301574707 9.665263175964355 L 
@@ -79,83 +83,78 @@ export default class Comment extends HTMLElement {
                   7.014285087585449 Z"></path>
               </svg>
           </div>`;
-  
-      var favBtn = this.children[1].children[2];
-      favBtn.addEventListener("click", () => {
-        this.toggleFavourite();
-      });
-      var editBtn = this.children[1].children[3];
-      editBtn.addEventListener("click", () => {
-        new EditCommentModal(this.id, this.text);
-      });
-      var deleteBtn = this.children[1].children[4];
-      deleteBtn.addEventListener("click", () => {
-        this.delete();
-      });
-      document.getElementById("tmw-comment-containers-outer").appendChild(this);
-    }
-  
-    getHTMLElement() {
-      return this;
-    }
-  
-    toggleFavourite() {
-      var favElement = this.children[1].children[2];
-      if (this.favourite) {
-        favElement.classList.remove("tmw-active-favourite-icon");
-        favElement.children[0].setAttribute(
-          "d",
-          "M 25.15789413452148 10.38315773010254 L 16.8326301574707 " +
-            "9.665263175964355 L 13.57894802093506 2 L 10.32526302337646 9.67684268951416 L 2 10.38315773010254 L " +
-            "8.322105407714844 15.85999965667725 L 6.423157691955566 24 L 13.57894802093506 19.68105316162109 L " +
-            "20.7347354888916 24 L 18.84736824035645 15.85999965667725 L 25.15789413452148 10.38315773010254 Z M " +
-            "13.57894802093506 17.51578903198242 L 9.225262641906738 20.14420890808105 L 10.38315773010254 " +
-            "15.18842029571533 L 6.538947105407715 11.85368347167969 L 11.61052703857422 11.41368389129639 L " +
-            "13.57894802093506 6.747367858886719 L 15.55894756317139 11.42526245117188 L 20.63052558898926 " +
-            "11.86526298522949 L 16.78631591796875 15.19999980926514 L 17.94421005249023 20.15578842163086 L " +
-            "13.57894802093506 17.51578903198242 Z"
-        );
-        this.favourite = false;
-      } else {
-        favElement.classList.add("tmw-active-favourite-icon");
-        favElement.children[0].setAttribute(
-          "d",
-          "M 13.57894515991211 19.68105506896973 L 20.7347354888916 " +
-            "24.00000190734863 L 18.83579063415527 15.86000061035156 L 25.15789413452148 10.38315963745117 L " +
-            "16.8326301574707 9.676843643188477 L 13.57894515991211 2 L 10.32526111602783 9.676843643188477 L " +
-            "1.999999403953552 10.38315963745117 L 8.322103500366211 15.86000061035156 L 6.423157215118408 " +
-            "24.00000190734863 L 13.57894515991211 19.68105506896973 Z"
-        );
-        this.favourite = true;
-      }
-      let children = [].slice.call(document.getElementById("tmw-comment-containers-outer").childNodes)
-      children.sort(
-        function (comment1, comment2) {
-          if (comment1.favourite && comment2.favourite) {
-            if (comment1.id < comment2.id) return -1
-            if (comment1.id > comment2.id) return 1
-          }
-          else if (comment1.favourite) return -1
-          else if (comment2.favourite) return 1
-          else {
-            if (comment1.id < comment2.id) return -1
-            if (comment1.id > comment2.id) return 1
-          }
-      }).forEach(child => document.getElementById("tmw-comment-containers-outer").appendChild(child))
-    }
-  
-    updateText(text) {
-        this.text = text;
-        this.children[0].innerHTML = text;
-    }
-  
-    delete() {
-      this.remove();
-    }
-  
-    toString() {
-      return this.text;
-    }
+
+    var favBtn = this.children[1].children[2];
+    favBtn.addEventListener("click", () => {
+      this.toggleFavourite();
+    });
+    var editBtn = this.children[1].children[3];
+    editBtn.addEventListener("click", () => {
+      new EditCommentModal(this.id, this.text);
+    });
+    var deleteBtn = this.children[1].children[4];
+    deleteBtn.addEventListener("click", () => {
+      this.delete();
+    });
+    document.getElementById("tmw-comment-containers-outer").appendChild(this);
   }
-  
-  customElements.define("defined-comment", Comment);
+
+  getHTMLElement() {
+    return this;
+  }
+
+  toggleFavourite() {
+    var favElement = this.children[1].children[2];
+    if (this.favourite) {
+      favElement.classList.remove("tmw-active-favourite-icon");
+      favElement.children[0].setAttribute(
+        "d",
+        "M 25.15789413452148 10.38315773010254 L 16.8326301574707 " +
+          "9.665263175964355 L 13.57894802093506 2 L 10.32526302337646 9.67684268951416 L 2 10.38315773010254 L " +
+          "8.322105407714844 15.85999965667725 L 6.423157691955566 24 L 13.57894802093506 19.68105316162109 L " +
+          "20.7347354888916 24 L 18.84736824035645 15.85999965667725 L 25.15789413452148 10.38315773010254 Z M " +
+          "13.57894802093506 17.51578903198242 L 9.225262641906738 20.14420890808105 L 10.38315773010254 " +
+          "15.18842029571533 L 6.538947105407715 11.85368347167969 L 11.61052703857422 11.41368389129639 L " +
+          "13.57894802093506 6.747367858886719 L 15.55894756317139 11.42526245117188 L 20.63052558898926 " +
+          "11.86526298522949 L 16.78631591796875 15.19999980926514 L 17.94421005249023 20.15578842163086 L " +
+          "13.57894802093506 17.51578903198242 Z"
+      );
+      this.favourite = false;
+    } else {
+      favElement.classList.add("tmw-active-favourite-icon");
+      favElement.children[0].setAttribute(
+        "d",
+        "M 13.57894515991211 19.68105506896973 L 20.7347354888916 " +
+          "24.00000190734863 L 18.83579063415527 15.86000061035156 L 25.15789413452148 10.38315963745117 L " +
+          "16.8326301574707 9.676843643188477 L 13.57894515991211 2 L 10.32526111602783 9.676843643188477 L " +
+          "1.999999403953552 10.38315963745117 L 8.322103500366211 15.86000061035156 L 6.423157215118408 " +
+          "24.00000190734863 L 13.57894515991211 19.68105506896973 Z"
+      );
+      this.favourite = true;
+    }
+    this.parentElement.sortComments();
+  }
+
+  updateText(text) {
+    this.text = text;
+    this.children[0].innerHTML = text;
+  }
+
+  delete() {
+    this.remove();
+  }
+
+  toString() {
+    return this.id;
+  }
+
+  toArray() {
+    return [this.id, this.text, this.count, this.favourite];
+  }
+
+  getText() {
+    return this.text;
+  }
+}
+
+customElements.define("defined-comment", Comment);

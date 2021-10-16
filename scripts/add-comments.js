@@ -1,8 +1,6 @@
 import CommentPage from "./CommentPage.js";
-import Comment from "./Comment.js";
 
 let textInputElement = document.getElementById("tmw-comment-entry-area");
-let commentCount = 0;
 let defaultPage;
 
 window.onload = () => {

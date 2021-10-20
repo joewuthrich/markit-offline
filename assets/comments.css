@@ -54,6 +54,11 @@
   user-select: none;
 }
 
+.tmw-comment-count:hover {
+  color: var(--text-hover-color);
+  cursor: pointer;
+}
+
 .tmw-icon {
   fill: var(--text-color);
   width: 20px;

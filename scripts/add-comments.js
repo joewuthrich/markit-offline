@@ -32,3 +32,11 @@ function addComment() {
     textInputElement.blur();
   }
 }
+
+document.getElementById("tmw-new-page").addEventListener("click", function () {
+  document
+    .getElementById("tmw-comment-containers-outer")
+    .childNodes.forEach((element) => {
+      element.style.display = "none";
+    });
+});

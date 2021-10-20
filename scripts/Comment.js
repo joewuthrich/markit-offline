@@ -14,6 +14,7 @@ export default class Comment extends HTMLElement {
     this.addEventListener("click", function (event) {
       var icons = this.children[1].children;
       if (
+        event.target == icons[1] ||
         event.target == icons[2] ||
         event.target == icons[3] ||
         event.target == icons[4] ||
@@ -84,7 +85,12 @@ export default class Comment extends HTMLElement {
                   7.014285087585449 Z"></path>
               </svg>
           </div>`;
-
+    this.children[1].children[1].addEventListener("click", () => {
+      if (this.count <= 0) return;
+      this.count--;
+      this.children[1].children[1].innerHTML = this.count;
+      this.parentElement.updateStorage();
+    });
     var favBtn = this.children[1].children[2];
     favBtn.addEventListener("click", () => {
       this.toggleFavourite();

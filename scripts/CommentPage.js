@@ -86,6 +86,7 @@ export default class CommentPage extends HTMLElement {
 
   updateStorage() {
     let data = JSON.parse(localStorage.getItem("comment-data"));
+    if (data == null) data = {};
     data[this.name + "𝕕𝕕"] = Array.from(this.children, (item) =>
       item.toArray()
     );

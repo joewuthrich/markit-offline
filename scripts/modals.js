@@ -20,6 +20,15 @@ export default class EditCommentModal extends HTMLElement {
       if (event.target == this) this.style.display = "none";
     });
 
+    this.addEventListener("keydown", (event) => {
+      if (event.key != "Enter" || event.shiftKey) return;
+      event.preventDefault();
+      var textbox = this.querySelector(".tmw-comment-entry-area");
+      if (textbox.value == "") return;
+      document.getElementById(this.targetID).updateText(textbox.value);
+      this.delete();
+    });
+
     this.children[0].children[1].addEventListener("click", () => {
       var textbox = this.querySelector(".tmw-comment-entry-area");
       if (textbox.value == "") return;

@@ -1,6 +1,6 @@
 let darkMode = false;
 let data = JSON.parse(localStorage.getItem("comment-data"));
-if (data["𝕕𝕕"]) toggleDark();
+if (data["𝕕𝕕-Dark𝕕Mo𝕕e"]) toggleDark();
 
 document
   .getElementById("tmw-dark-mode-toggle")
@@ -44,6 +44,6 @@ function toggleDark() {
   }
 
   data = JSON.parse(localStorage.getItem("comment-data"));
-  data["𝕕𝕕"] = darkMode;
+  data["𝕕𝕕-Dark𝕕Mo𝕕e"] = darkMode;
   localStorage.setItem("comment-data", JSON.stringify(data));
 }

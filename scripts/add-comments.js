@@ -26,7 +26,16 @@ document
   });
 
 function addComment() {
-  var response = defaultPage.addComment(textInputElement.value);
+  var pages = document.getElementById(
+    "tmw-comment-containers-outer"
+  ).childNodes;
+  for (var page of pages) {
+    if (page.style.display != "none") {
+      pages = page;
+      break;
+    }
+  }
+  var response = page.addComment(textInputElement.value);
   if (response) {
     textInputElement.value = "";
     textInputElement.blur();
@@ -37,6 +46,8 @@ document.getElementById("tmw-new-page").addEventListener("click", function () {
   document
     .getElementById("tmw-comment-containers-outer")
     .childNodes.forEach((element) => {
-      element.style.display = "none";
+      element.remove();
     });
+  var newPage = new CommentPage("new");
+  document.getElementById("tmw-comment-containers-outer").append(newPage);
 });

@@ -1,4 +1,4 @@
-import CommentPage from "./CommentPage.js";
+import CommentPage from "./elements/CommentPage.js";
 
 let textInputElement = document.getElementById("tmw-comment-entry-area");
 let defaultPage;

@@ -4,7 +4,7 @@ export default class NewPageModal extends Modal {
   constructor() {
     super(
       `
-    <div class="tmw-comment-entry-container tmw-modal-entry-container">
+    <div class="tmw-modal-container-inner">
         <div class="tmw-comment-entry-area-container">
             <textarea id="tmw-modal-entry-area" class="tmw-comment-entry-area" placeholder="¶">` +
         "" +

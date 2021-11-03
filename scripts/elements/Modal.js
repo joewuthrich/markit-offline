@@ -6,7 +6,11 @@ export default class Modal extends HTMLElement {
       document.getElementById("tmw-modal-container").remove();
 
     this.id = "tmw-modal-container";
-    this.innerHTML = content;
+    this.innerHTML =
+      `
+    <div class="tmw-modal-container-inner">` +
+      content +
+      `</div>`;
 
     this.addEventListener("click", function (event) {
       if (event.target == this) this.remove();

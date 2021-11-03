@@ -4,14 +4,12 @@ export default class EditCommentModal extends Modal {
   constructor(id, text) {
     super(
       `
-    <div class="tmw-comment-entry-container tmw-modal-entry-container">
-        <div class="tmw-comment-entry-area-container">
-            <textarea id="tmw-modal-entry-area" class="tmw-comment-entry-area" placeholder="¶">` +
+      <div class="tmw-comment-entry-area-container">
+          <textarea id="tmw-modal-entry-area" class="tmw-comment-entry-area" placeholder="¶">` +
         text +
         `</textarea>
-        </div>
-        <div id="tmw-submit-modal-text" class="tmw-comment-submit-btn">SUBMIT</div>
-    </div>
+      </div>
+      <div id="tmw-submit-modal-text" class="tmw-comment-submit-btn">SUBMIT</div>
     `
     );
 

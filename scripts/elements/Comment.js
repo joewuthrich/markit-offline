@@ -1,4 +1,4 @@
-import EditCommentModal from "./EditCommentModal.js";
+import EditCommentModal from "./modals/EditCommentModal.js";
 
 export default class Comment extends HTMLElement {
   constructor(id, text, count = 0, favourite = false) {

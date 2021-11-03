@@ -17,7 +17,7 @@ export default class EditCommentModal extends HTMLElement {
         `;
 
     this.addEventListener("click", function (event) {
-      if (event.target == this) this.style.display = "none";
+      if (event.target == this) this.remove();
     });
 
     this.addEventListener("keydown", (event) => {
@@ -26,21 +26,17 @@ export default class EditCommentModal extends HTMLElement {
       var textbox = this.querySelector(".tmw-comment-entry-area");
       if (textbox.value == "") return;
       document.getElementById(this.targetID).updateText(textbox.value);
-      this.delete();
+      this.remove();
     });
 
     this.children[0].children[1].addEventListener("click", () => {
       var textbox = this.querySelector(".tmw-comment-entry-area");
       if (textbox.value == "") return;
       document.getElementById(this.targetID).updateText(textbox.value);
-      this.delete();
+      this.remove();
     });
 
     document.getElementById("tmw-body").append(this);
-  }
-
-  delete() {
-    this.remove();
   }
 }
 

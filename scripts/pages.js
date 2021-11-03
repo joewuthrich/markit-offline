@@ -1,5 +1,5 @@
 import CommentPage from "./elements/CommentPage.js";
-import Modal from "./elements/Modal.js";
+import NewPageModal from "./elements/modals/NewPageModal.js";
 
 window.onload = () => {
   var defaultPage = new CommentPage("default");
@@ -7,6 +7,8 @@ window.onload = () => {
 };
 
 document.getElementById("tmw-new-page").addEventListener("click", function () {
+  var newPageModal = new NewPageModal();
+
   document
     .getElementById("tmw-comment-containers-outer")
     .childNodes.forEach((element) => {

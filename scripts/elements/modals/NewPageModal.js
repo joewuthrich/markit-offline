@@ -1,13 +1,13 @@
 import Modal from "../Modal.js";
 
-export default class EditCommentModal extends Modal {
-  constructor(id, text) {
+export default class NewPageModal extends Modal {
+  constructor() {
     super(
       `
     <div class="tmw-comment-entry-container tmw-modal-entry-container">
         <div class="tmw-comment-entry-area-container">
             <textarea id="tmw-modal-entry-area" class="tmw-comment-entry-area" placeholder="¶">` +
-        text +
+        "" +
         `</textarea>
         </div>
         <div id="tmw-submit-modal-text" class="tmw-comment-submit-btn">SUBMIT</div>
@@ -15,30 +15,27 @@ export default class EditCommentModal extends Modal {
     `
     );
 
-    this.targetID = id;
-
     this.addEventListener("keydown", (event) => {
       if (event.key != "Enter" || event.shiftKey) return;
       event.preventDefault();
-      this.submitChange();
+      this.submitPage();
     });
 
     this.children[0].children[1].addEventListener("click", () => {
-      this.submitChange();
+      this.submitPage();
     });
 
-    var commentEntryArea = this.querySelector(".tmw-comment-entry-area");
-
-    commentEntryArea.focus();
-    commentEntryArea.setSelectionRange(text.length, text.length);
+    //TODO: FOCUS INPUT
   }
 
-  submitChange() {
+  submitPage() {
     var textbox = this.querySelector(".tmw-comment-entry-area");
     if (textbox.value == "") return;
-    document.getElementById(this.targetID).updateText(textbox.value);
+
+    //TODO: ADD NEW PAGE HERE
+
     this.remove();
   }
 }
 
-customElements.define("tmw-edit-modal", EditCommentModal);
+customElements.define("tmw-new-page-modal", NewPageModal);

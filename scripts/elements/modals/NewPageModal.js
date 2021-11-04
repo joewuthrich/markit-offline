@@ -6,10 +6,12 @@ export default class NewPageModal extends Modal {
     super(
       `
         <div class="tmw-new-page-modal-header">NEW PAGE NAME:</div>
-        <div class="tmw-modal-entry-area-container">
-            <input id="tmw-modal-entry-area" class="tmw-modal-entry-area tmw-comment-entry-area" placeholder="¶">` +
-        "" +
-        `</textarea>
+        <div class="tmw-modal-input-container">
+          <div class="tmw-modal-spacer"></div>
+            <div class="tmw-modal-entry-area-container">
+              <input id="tmw-modal-entry-area" class="tmw-modal-entry-area tmw-comment-entry-area" placeholder="¶"></input>
+            </div>
+          <div class="tmw-modal-spacer"></div>
         </div>
         <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn">SUBMIT</div>
     `

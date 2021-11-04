@@ -31,6 +31,7 @@
   flex-direction: row;
   overflow: none;
   width: 80%;
+  min-width: 276px;
 }
 
 .tmw-new-page-modal-header {
@@ -73,11 +74,22 @@
 }
 
 .tmw-modal-entry-area-container {
-  margin: 25px;
+  margin-bottom: 25px;
   background-color: var(--main-background-color);
   border-radius: 20px;
   overflow: hidden;
-  width: 97%;
+  width: 100%;
   display: flex;
   margin-top: 15px;
+}
+
+.tmw-modal-input-container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+
+.tmw-modal-spacer {
+  width: 25px;
+  height: 1px;
 }

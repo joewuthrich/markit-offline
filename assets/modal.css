@@ -1,0 +1,83 @@
+#tmw-modal-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  background: var(--modal-background-color);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tmw-close-modal-icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+  height: 10px;
+  width: 10px;
+}
+
+.tmw-modal-container-inner {
+  position: relative;
+  background: var(--container-background-color);
+  border-radius: 20px;
+  max-width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  overflow: none;
+  width: 80%;
+}
+
+.tmw-new-page-modal-header {
+  font-size: 24px;
+  font-weight: 700;
+  margin-right: auto;
+  padding-left: 25px;
+  padding-top: 25px;
+  color: var(--text-color);
+}
+
+.tmw-confirm-modal-header {
+  font-size: 24px;
+  font-weight: 700;
+  padding-top: 25px;
+  color: var(--text-color);
+  padding-bottom: 30px;
+}
+
+.tmw-modal-submit-btn {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: opensans_semibold, Arial;
+  color: var(--text-color);
+  user-select: none;
+  padding-bottom: 20px;
+}
+
+.tmw-modal-submit-btn:hover {
+  color: var(--text-hover-color);
+  cursor: pointer;
+}
+
+.tmw-modal-entry-area {
+  flex: 1 1 auto;
+  height: 25px !important;
+  display: flex;
+  font-size: 16px;
+  font-family: opensans_regular, Arial;
+}
+
+.tmw-modal-entry-area-container {
+  margin: 25px;
+  background-color: var(--main-background-color);
+  border-radius: 20px;
+  overflow: hidden;
+  width: 97%;
+  display: flex;
+  margin-top: 15px;
+}

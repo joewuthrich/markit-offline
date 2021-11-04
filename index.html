@@ -3,50 +3,44 @@
   <head>
     <meta charset="UTF-8" />
     <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <link rel="stylesheet" type="text/css" href="./styles.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./assets/styles.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/comments.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/menu.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/entry.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/modal.css" />
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
     <title>Comment Tracker</title>
   </head>
-  <body>
-    <div class="mContainer">
-      <div id="myModal" class="modal">
-        <div class="modal-content" id="new-page">
-          <input id="nameInput"></input>
-          <div id="nameSubmit"></div>
+  <body id="tmw-body">
+      <div class="tmw-header-menu-container">
+        <div class="tmw-header-menu-inner-container">
+          <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
+          <div class="tmw-menu-element">IMPORT FROM .CSV</div>
+          <div class="tmw-menu-element">VIEW GRAPH</div>
+          <div class="tmw-page-name-container">
+            <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
+            <svg data-layer="9a724ebb-647e-427d-a2be-932a346612f1" preserveAspectRatio="none" 
+            viewBox="8 5 11 14" class="tmw-dropdown-icon">
+              <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
+            </svg>
+          </div>
+          <div class="tmw-menu-element" id="tmw-dark-mode-toggle">DARK MODE</div>
+          <div class="tmw-menu-element">EXPORT TO .CSV</div>
+          <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
         </div>
-      </div>
-      <div id="editModal" class="modal">
-        <div class="modal-content" id="edit-comment">
-          <textarea rows="5" cols="70" id="editInput"></textarea>
-          <div id="editSubmit"></div>
-        </div>
-      </div>
-      <div id="chartModal" class="modal">
-        <div class="modal-content">
-          <canvas id="chart" width="400" height="400"></canvas>
-        </div>
-      </div>
-      <div id="menu">
-        <p id="create">Create</p>
-        <p id="delete">Delete</p>
-      </div>
-      <div id="dropdownContainer">
-        <h2 id="dropdown">Page Name</h2>
-      </div>
-      <div id="dropdownListContainer">
-        <div id="dropdownList">
-        </div>
-      </div>
-      <div id="chartContainer">
-        <p id="openChart">Chart</p>
-      </div>
-      <div class="center" id="submissionContainer">
-        <textarea rows="5" cols="70" name="textbox" id="textbox"></textarea>
-        <div id="submitComment"></div>
       </div>
 
-      <div id="currentComments" class="center"></div>
+      <div class="tmw-comment-entry-container">
+        <div class="tmw-comment-entry-area-container">
+          <textarea id="tmw-comment-entry-area" class="tmw-comment-entry-area" placeholder="¶"></textarea>
+        </div>
+        <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">SUBMIT</div>
+      </div>
+
+      <div id="tmw-comment-containers-outer"></div>
     </div>
-    <script type="module" src="./scripts.js"></script>
+    <script type="module" src="./scripts/extras.js"></script>
+    <script type="module" src="./scripts/add-comments.js"></script>
+    <script type="module" src="./scripts/pages.js"></script>
   </body>
 </html>

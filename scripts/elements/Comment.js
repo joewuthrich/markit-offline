@@ -102,7 +102,6 @@ export default class Comment extends HTMLElement {
     });
     var deleteBtn = this.children[1].children[4];
     deleteBtn.addEventListener("click", () => {
-      // this.parentElement.removeComment(this);
       new ConfirmModal(this.id);
     });
     if (favourite) this.toggleFavourite(true);

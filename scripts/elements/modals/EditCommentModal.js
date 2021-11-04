@@ -21,7 +21,7 @@ export default class EditCommentModal extends Modal {
       this.submitChange();
     });
 
-    this.children[0].children[1].addEventListener("click", () => {
+    this.children[0].children[2].addEventListener("click", () => {
       this.submitChange();
     });
 

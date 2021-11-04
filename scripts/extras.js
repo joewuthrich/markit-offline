@@ -1,3 +1,5 @@
+import UploadModal from "./elements/modals/UploadModal.js";
+
 let darkMode = false;
 let data = JSON.parse(localStorage.getItem("comment-data"));
 if (data["𝕕𝕕-Dark𝕕Mo𝕕e"]) toggleDark();
@@ -51,9 +53,20 @@ function toggleDark() {
 document
   .getElementById("tmw-export-json")
   .addEventListener("click", function () {
+    localStorage.getItem("comment-data");
+
+    let data = JSON.parse(localStorage.getItem("comment-data"));
+    if (data == null) data = {};
+    var page =
+      data[
+        document
+          .getElementById("tmw-comment-containers-outer")
+          .children[0].getName(true)
+      ];
+
     var dataStr =
       "data:text/json;charset=utf-8," +
-      encodeURIComponent(JSON.stringify(localStorage.getItem("comment-data")));
+      encodeURIComponent(JSON.stringify(page));
     var downloadAnchorNode = document.createElement("a");
     downloadAnchorNode.setAttribute("href", dataStr);
     downloadAnchorNode.setAttribute(
@@ -65,4 +78,10 @@ document
     document.body.appendChild(downloadAnchorNode); // required for firefox
     downloadAnchorNode.click();
     downloadAnchorNode.remove();
+  });
+
+document
+  .getElementById("tmw-import-json")
+  .addEventListener("click", function () {
+    new UploadModal();
   });

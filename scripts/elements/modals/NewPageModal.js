@@ -1,4 +1,5 @@
 import Modal from "../Modal.js";
+import CommentPage from "../CommentPage.js";
 
 export default class NewPageModal extends Modal {
   constructor() {
@@ -22,7 +23,7 @@ export default class NewPageModal extends Modal {
       this.submitPage();
     });
 
-    this.children[0].children[1].addEventListener("click", () => {
+    this.children[0].children[3].addEventListener("click", () => {
       this.submitPage();
     });
 
@@ -33,7 +34,14 @@ export default class NewPageModal extends Modal {
     var textbox = this.querySelector(".tmw-comment-entry-area");
     if (textbox.value == "") return;
 
-    //TODO: ADD NEW PAGE HERE
+    document
+      .getElementById("tmw-comment-containers-outer")
+      .childNodes.forEach((element) => {
+        element.remove();
+      });
+
+    var newPage = new CommentPage(textbox.value);
+    document.getElementById("tmw-comment-containers-outer").append(newPage);
 
     this.remove();
   }

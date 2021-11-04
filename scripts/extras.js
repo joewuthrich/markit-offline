@@ -47,3 +47,22 @@ function toggleDark() {
   data["𝕕𝕕-Dark𝕕Mo𝕕e"] = darkMode;
   localStorage.setItem("comment-data", JSON.stringify(data));
 }
+
+document
+  .getElementById("tmw-export-json")
+  .addEventListener("click", function () {
+    var dataStr =
+      "data:text/json;charset=utf-8," +
+      encodeURIComponent(JSON.stringify(localStorage.getItem("comment-data")));
+    var downloadAnchorNode = document.createElement("a");
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute(
+      "download",
+      document
+        .getElementById("tmw-comment-containers-outer")
+        .children[0].getName() + ".json"
+    );
+    document.body.appendChild(downloadAnchorNode); // required for firefox
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+  });

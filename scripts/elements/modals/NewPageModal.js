@@ -16,6 +16,7 @@ export default class NewPageModal extends Modal {
     );
 
     this.children[0].style.flexDirection = "column";
+    this.children[0].style.width = "30%";
 
     this.addEventListener("keydown", (event) => {
       if (event.key != "Enter" || event.shiftKey) return;

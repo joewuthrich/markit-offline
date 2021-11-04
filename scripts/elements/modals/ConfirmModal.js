@@ -4,13 +4,14 @@ export default class ConfirmModal extends Modal {
   constructor(id = undefined) {
     super(
       `
-      <div class="tmw-confirm-modal-header">ARE YOU SURE?</div>
+      <div class="tmw-confirm-modal-header" style="font-weight: 800">ARE YOU SURE?</div>
       <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn">YES</div>
     `
     );
 
     this.targetID = id;
     this.children[0].style.flexDirection = "column";
+    this.children[0].style.width = "30%";
 
     this.addEventListener("keydown", (event) => {
       if (event.key != "Enter" || event.shiftKey) return;
@@ -39,7 +40,7 @@ export default class ConfirmModal extends Modal {
     delete data[
       document
         .getElementById("tmw-comment-containers-outer")
-        .children[0].getStorageName()
+        .children[0].getName(true)
     ];
     localStorage.setItem("comment-data", JSON.stringify(data));
 

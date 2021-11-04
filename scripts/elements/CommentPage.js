@@ -93,8 +93,11 @@ export default class CommentPage extends HTMLElement {
     localStorage.setItem("comment-data", JSON.stringify(data));
   }
 
-  getStorageName() {
-    return this.name + "𝕕𝕕";
+  /**
+   * @param {Boolean} storage if it should return the storage name or not
+   */
+  getName(storage = false) {
+    return storage ? this.name + "𝕕𝕕" : this.name;
   }
 }
 

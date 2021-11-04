@@ -92,6 +92,10 @@ export default class CommentPage extends HTMLElement {
     );
     localStorage.setItem("comment-data", JSON.stringify(data));
   }
+
+  getStorageName() {
+    return this.name + "𝕕𝕕";
+  }
 }
 
 customElements.define("defined-page", CommentPage);

@@ -1,4 +1,5 @@
 import EditCommentModal from "./modals/EditCommentModal.js";
+import ConfirmModal from "./modals/ConfirmModal.js";
 
 export default class Comment extends HTMLElement {
   constructor(id, text, count = 0, favourite = false) {
@@ -101,7 +102,8 @@ export default class Comment extends HTMLElement {
     });
     var deleteBtn = this.children[1].children[4];
     deleteBtn.addEventListener("click", () => {
-      this.parentElement.removeComment(this);
+      // this.parentElement.removeComment(this);
+      new ConfirmModal(this.id);
     });
     if (favourite) this.toggleFavourite(true);
   }

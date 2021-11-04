@@ -4,16 +4,17 @@ export default class NewPageModal extends Modal {
   constructor() {
     super(
       `
-    <div class="tmw-modal-container-inner">
-        <div class="tmw-comment-entry-area-container">
-            <textarea id="tmw-modal-entry-area" class="tmw-comment-entry-area" placeholder="¶">` +
+        <div class="tmw-new-page-modal-header">NEW PAGE NAME:</div>
+        <div class="tmw-modal-entry-area-container">
+            <input id="tmw-modal-entry-area" class="tmw-modal-entry-area tmw-comment-entry-area" placeholder="¶">` +
         "" +
         `</textarea>
         </div>
-        <div id="tmw-submit-modal-text" class="tmw-comment-submit-btn">SUBMIT</div>
-    </div>
+        <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn">SUBMIT</div>
     `
     );
+
+    this.children[0].style.flexDirection = "column";
 
     this.addEventListener("keydown", (event) => {
       if (event.key != "Enter" || event.shiftKey) return;

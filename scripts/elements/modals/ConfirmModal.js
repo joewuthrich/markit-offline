@@ -41,6 +41,8 @@ export default class ConfirmModal extends Modal {
         .getElementById("tmw-comment-containers-outer")
         .children[0].getStorageName()
     ];
+    localStorage.setItem("comment-data", JSON.stringify(data));
+
     document
       .getElementById("tmw-comment-containers-outer")
       .children[0].remove();

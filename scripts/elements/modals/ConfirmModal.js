@@ -5,7 +5,7 @@ export default class ConfirmModal extends Modal {
     super(
       `
       <div class="tmw-confirm-modal-header" style="font-weight: 800">ARE YOU SURE?</div>
-      <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn">YES</div>
+      <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn" style="font-weight: 100; font-size: 17px">YES</div>
     `
     );
 

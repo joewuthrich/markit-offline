@@ -13,7 +13,7 @@ export default class NewPageModal extends Modal {
             </div>
           <div class="tmw-modal-spacer"></div>
         </div>
-        <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn">SUBMIT</div>
+        <div class="tmw-modal-submit-btn">SUBMIT</div>
     `
     );
 

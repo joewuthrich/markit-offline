@@ -44,16 +44,18 @@
 }
 
 .tmw-confirm-modal-header {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   padding-top: 25px;
   color: var(--text-color);
-  padding-bottom: 30px;
+  padding-bottom: 10px;
+  margin-right: auto;
+  padding-left: 25px;
 }
 
 .tmw-modal-submit-btn {
-  font-size: 20px;
-  font-weight: 700;
+  font-size: 15px;
+  font-weight: 100;
   font-family: opensans_semibold, Arial;
   color: var(--text-color);
   user-select: none;

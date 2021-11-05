@@ -1,12 +1,21 @@
 import Modal from "../Modal.js";
+import CommentPage from "../CommentPage.js";
 
 export default class UploadModal extends Modal {
   constructor() {
     super(
       `
       <div class="tmw-confirm-modal-header" style="font-weight: 800">UPLOAD JSON FILE</div>
-      <input type="file" id="myFile" style="padding-bottom: 25px">
-      <div id="tmw-submit-modal-text" class="tmw-modal-submit-btn">SUBMIT</div>
+      <input type="file" id="myFile" style="padding-bottom: 10px">
+      <div class="tmw-confirm-modal-header" style="font-weight: 800">NEW PAGE NAME</div>
+      <div class="tmw-modal-input-container" style="margin-top: -15px;">
+          <div class="tmw-modal-spacer"></div>
+          <div class="tmw-modal-entry-area-container">
+            <input id="tmw-modal-entry-area" class="tmw-modal-entry-area tmw-comment-entry-area" placeholder="¶"></input>
+          </div>
+          <div class="tmw-modal-spacer"></div>
+        </div>
+      <div class="tmw-modal-submit-btn">SUBMIT</div>
     `
     );
 
@@ -19,7 +28,7 @@ export default class UploadModal extends Modal {
       this.upload();
     });
 
-    this.children[0].children[3].addEventListener("click", () => {
+    this.children[0].children[5].addEventListener("click", () => {
       this.upload();
     });
 
@@ -28,9 +37,16 @@ export default class UploadModal extends Modal {
       event.preventDefault();
     };
 
-    dropArea.ondrop = function (event) {
+    dropArea.ondrop = (event) => {
       dropArea.files = event.dataTransfer.files;
+      this.children[0].children[4].children[1].children[0].value =
+        dropArea.files[0].name.slice(0, -5);
       event.preventDefault();
+    };
+
+    dropArea.onchange = () => {
+      this.children[0].children[4].children[1].children[0].value =
+        dropArea.files[0].name.slice(0, -5);
     };
   }
 
@@ -42,8 +58,20 @@ export default class UploadModal extends Modal {
       try {
         var importedData = JSON.parse(reader.result);
         var data = JSON.parse(localStorage.getItem("comment-data"));
-        data[jsonFile.name.slice(0, -5) + "𝕕𝕕"] = importedData;
+        data[
+          this.children[0].children[4].children[1].children[0].value + "𝕕𝕕"
+        ] = importedData;
         localStorage.setItem("comment-data", JSON.stringify(data));
+
+        document
+          .getElementById("tmw-comment-containers-outer")
+          .childNodes.forEach((element) => {
+            element.remove();
+          });
+        var newPage = new CommentPage(
+          this.children[0].children[4].children[1].children[0].value
+        );
+        document.getElementById("tmw-comment-containers-outer").append(newPage);
         this.remove();
       } catch (error) {
         console.log("ARE YOU SURE THAT IS A JSON FILE?");

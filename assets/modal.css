@@ -99,5 +99,19 @@
   height: 1px;
 }
 
-.tmw-modal-file-upload {
+.tmw-modal-overwrite-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  align-items: space-around;
+  justify-content: space-around;
+}
+
+.tmw-exists-modal-header {
+  font-weight: 800;
+  padding-top: 30px;
+  font-size: 18px;
+  padding-bottom: 30px;
+  margin-right: 0px;
+  padding-left: 0px;
 }

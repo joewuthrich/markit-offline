@@ -1,8 +1,11 @@
 export default class Modal extends HTMLElement {
-  constructor(content) {
+  constructor(content, overwrite = true) {
     super();
 
-    if (document.getElementById("tmw-modal-container") != undefined)
+    if (
+      document.getElementById("tmw-modal-container") != undefined &&
+      overwrite
+    )
       document.getElementById("tmw-modal-container").remove();
 
     this.id = "tmw-modal-container";

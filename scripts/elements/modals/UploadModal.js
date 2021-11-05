@@ -1,5 +1,6 @@
 import Modal from "../Modal.js";
 import CommentPage from "../CommentPage.js";
+import OverwriteModal from "./OverwriteModal.js";
 
 export default class UploadModal extends Modal {
   constructor() {
@@ -7,7 +8,7 @@ export default class UploadModal extends Modal {
       `
       <div class="tmw-confirm-modal-header tmw-upload-modal-header" 
         style="font-weight: 800">UPLOAD JSON FILE</div>
-      <input type="file" id="myFile" style="padding-bottom: 10px">
+      <input type="file" id="myFile" style="padding-bottom: 10px; padding-top: 5px">
       <div class="tmw-confirm-modal-header tmw-upload-modal-header" 
         style="font-weight: 800">NEW PAGE NAME</div>
       <div class="tmw-modal-input-container" style="margin-top: -15px;">
@@ -36,6 +37,11 @@ export default class UploadModal extends Modal {
     });
 
     const dropArea = this.children[0].children[2];
+    // if (file) {
+    //   dropArea.value = file;
+    //   this.children[0].children[4].children[1].children[0].value =
+    //     file.name.slice(0, -5);
+    // }
     dropArea.ondragover = dropArea.ondragenter = function (event) {
       event.preventDefault();
     };
@@ -61,9 +67,15 @@ export default class UploadModal extends Modal {
       try {
         var importedData = JSON.parse(reader.result);
         var data = JSON.parse(localStorage.getItem("comment-data"));
-        data[
-          this.children[0].children[4].children[1].children[0].value + "𝕕𝕕"
-        ] = importedData;
+        var nameInput =
+          this.children[0].children[4].children[1].children[0].value;
+        if (data[nameInput + "𝕕𝕕"]) {
+          console.log(nameInput);
+          new OverwriteModal(importedData, nameInput);
+          this.style.display = "none";
+          return;
+        }
+        data[nameInput + "𝕕𝕕"] = importedData;
         localStorage.setItem("comment-data", JSON.stringify(data));
 
         document
@@ -71,9 +83,7 @@ export default class UploadModal extends Modal {
           .childNodes.forEach((element) => {
             element.remove();
           });
-        var newPage = new CommentPage(
-          this.children[0].children[4].children[1].children[0].value
-        );
+        var newPage = new CommentPage(nameInput);
         document.getElementById("tmw-comment-containers-outer").append(newPage);
         this.remove();
       } catch (error) {

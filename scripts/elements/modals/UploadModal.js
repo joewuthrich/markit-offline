@@ -24,33 +24,30 @@ export default class UploadModal extends Modal {
     });
 
     const dropArea = this.children[0].children[2];
-
-    dropArea.addEventListener("dragover", (event) => {
-      event.stopPropagation();
+    dropArea.ondragover = dropArea.ondragenter = function (event) {
       event.preventDefault();
-      event.dataTransfer.dropEffect = "copy";
-    });
+    };
 
-    dropArea.addEventListener("drop", (event) => {
-      event.stopPropagation();
+    dropArea.ondrop = function (event) {
+      dropArea.files = event.dataTransfer.files;
       event.preventDefault();
-      const fileList = event.dataTransfer.files;
-      console.log(fileList);
-    });
+    };
   }
 
   upload() {
     var jsonFile = this.children[0].children[2].files[0];
     if (!jsonFile.type && jsonFile.type.startsWith("application/json")) return;
     const reader = new FileReader();
-    reader.addEventListener("load", function () {
+    reader.addEventListener("load", () => {
       try {
-        var importedData = JSON.parse(this.result);
+        var importedData = JSON.parse(reader.result);
         var data = JSON.parse(localStorage.getItem("comment-data"));
         data[jsonFile.name.slice(0, -5) + "𝕕𝕕"] = importedData;
         localStorage.setItem("comment-data", JSON.stringify(data));
-      } catch (SyntaxError) {
+        this.remove();
+      } catch (error) {
         console.log("ARE YOU SURE THAT IS A JSON FILE?");
+        console.log(error);
         //TODO: MAKE THIS MORE ROBUST
       }
     });

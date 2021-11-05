@@ -5,13 +5,16 @@ export default class UploadModal extends Modal {
   constructor() {
     super(
       `
-      <div class="tmw-confirm-modal-header" style="font-weight: 800">UPLOAD JSON FILE</div>
+      <div class="tmw-confirm-modal-header tmw-upload-modal-header" 
+        style="font-weight: 800">UPLOAD JSON FILE</div>
       <input type="file" id="myFile" style="padding-bottom: 10px">
-      <div class="tmw-confirm-modal-header" style="font-weight: 800">NEW PAGE NAME</div>
+      <div class="tmw-confirm-modal-header tmw-upload-modal-header" 
+        style="font-weight: 800">NEW PAGE NAME</div>
       <div class="tmw-modal-input-container" style="margin-top: -15px;">
           <div class="tmw-modal-spacer"></div>
           <div class="tmw-modal-entry-area-container">
-            <input id="tmw-modal-entry-area" class="tmw-modal-entry-area tmw-comment-entry-area" placeholder="¶"></input>
+            <input id="tmw-modal-entry-area" class="tmw-modal-entry-area 
+              tmw-comment-entry-area" placeholder="¶"></input>
           </div>
           <div class="tmw-modal-spacer"></div>
         </div>

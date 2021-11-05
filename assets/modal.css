@@ -49,6 +49,9 @@
   padding-top: 25px;
   color: var(--text-color);
   padding-bottom: 10px;
+}
+
+.tmw-upload-modal-header {
   margin-right: auto;
   padding-left: 25px;
 }

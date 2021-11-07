@@ -1,5 +1,7 @@
 import UploadModal from "./elements/modals/UploadModal.js";
 
+var editor;
+
 /**
  * Setting up dark mode
  */
@@ -115,6 +117,12 @@ function onDrag(event) {
   commentHalf.style.width = commentHalf.offsetWidth - elementX + "px";
   mouseX = event.clientX;
   width = window.innerWidth;
+
+  editor = document.getElementsByClassName("ql-editor")[0];
+  editor.style.width =
+    document.getElementById("tmw-note-container-outer").offsetWidth -
+    100 +
+    "px";
 }
 
 window.addEventListener("resize", resizeElements);
@@ -160,15 +168,35 @@ seperatorIcon.addEventListener("dblclick", () => {
 /**
  * Include the Quill editor
  */
-var quill = new Quill("#tmw-note-container", {
-  modules: {
-    toolbar: [
-      [{ header: [1, 2, false] }],
-      ["bold", "italic", "underline"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["image", "code-block"],
-    ],
-  },
-  placeholder: "Write notes here...",
-  theme: "snow",
+window.addEventListener("load", () => {
+  var quill = new Quill("#tmw-note-container", {
+    modules: {
+      toolbar: [
+        ["bold", "italic", "underline"],
+        [{ list: "ordered" }, { list: "bullet" }],
+        ["image", "code-block"],
+      ],
+    },
+    placeholder: "Write notes here...",
+    theme: "snow",
+    scrollingContainer: document.getElementById(
+      "tmw-note-container-inner-inner"
+    ),
+  });
+
+  fixEditorDimensions();
 });
+
+window.addEventListener("resize", fixEditorDimensions);
+
+function fixEditorDimensions() {
+  editor = document.getElementsByClassName("ql-editor")[0];
+
+  editor.style.height =
+    document.getElementById("tmw-note-container").offsetHeight - 25 + "px";
+
+  editor.style.width =
+    document.getElementById("tmw-note-container-outer").offsetWidth -
+    100 +
+    "px";
+}

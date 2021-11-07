@@ -11,14 +11,13 @@
 
 .tmw-note-container-inner {
   border-radius: 17px;
-  background: var(--main-background-color);
   display: flex;
   justify-content: center;
   align-items: center;
   flex: 1 1 auto;
   width: 100%;
-  margin-top: 25px;
-  margin-bottom: 25px;
+  max-height: 100%;
+  background: var(--main-background-color);
 }
 
 .tmw-note-container-inner-inner {

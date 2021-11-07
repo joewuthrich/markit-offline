@@ -106,23 +106,21 @@ function onDrag(event) {
   elementX = mouseX - event.clientX;
   if (commentHalf.offsetWidth - elementX < 475) {
     commentHalf.style.width = 476 + "px";
+    fixEditorDimensions();
     return;
   } else if (
     window.innerWidth - (commentHalf.offsetWidth - elementX + 4 * 40) <
     475
   ) {
     commentHalf.style.width = window.innerWidth - 476 - 4 * 40 + "px";
+    fixEditorDimensions();
     return;
   }
   commentHalf.style.width = commentHalf.offsetWidth - elementX + "px";
   mouseX = event.clientX;
   width = window.innerWidth;
 
-  editor = document.getElementsByClassName("ql-editor")[0];
-  editor.style.width =
-    document.getElementById("tmw-note-container-outer").offsetWidth -
-    100 +
-    "px";
+  fixEditorDimensions();
 }
 
 window.addEventListener("resize", resizeElements);
@@ -163,6 +161,7 @@ seperatorIcon.addEventListener("dblclick", () => {
   elementX = 0;
   mouseX = 0;
   commentHalf.style.width = "50%";
+  fixEditorDimensions();
 });
 
 /**

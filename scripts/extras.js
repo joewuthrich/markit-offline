@@ -96,23 +96,21 @@ const seperatorIcon = document.getElementById("tmw-seperator-icon");
 const commentHalf = document.getElementById("tmw-half-comment-container");
 const noteHalf = document.getElementById("tmw-half-note-container");
 var elementX = 0,
-  mouseX = 0,
-  savedWidth = "50%";
+  mouseX = 0;
 var width = window.innerWidth;
 
 function onDrag(event) {
   event.preventDefault();
   elementX = mouseX - event.clientX;
-  if (commentHalf.offsetWidth - elementX < 469) {
-    commentHalf.style.width = 470 + "px";
+  if (commentHalf.offsetWidth - elementX < 475) {
+    commentHalf.style.width = 476 + "px";
     return;
-  } else if (window.innerWidth - (commentHalf.offsetWidth - elementX) < 469) {
-    commentHalf.style.width = window.innerWidth - 470 + "px";
+  } else if (window.innerWidth - (commentHalf.offsetWidth - elementX) < 475) {
+    commentHalf.style.width = window.innerWidth - 476 + "px";
     return;
   }
+  commentHalf.style.width = commentHalf.offsetWidth - elementX + "px";
   mouseX = event.clientX;
-  savedWidth = commentHalf.style.width =
-    commentHalf.offsetWidth - elementX + "px";
   width = window.innerWidth;
 }
 
@@ -120,14 +118,20 @@ window.addEventListener("resize", resizeElements);
 window.addEventListener("load", resizeElements);
 
 function resizeElements() {
-  if (window.innerWidth < 940) {
+  if (window.innerWidth < 1110) {
     noteHalf.style.display = "none";
     seperatorIcon.style.display = "none";
-    commentHalf.style.width = "100%";
+    commentHalf.style.flex = "1";
+    for (var element of document.getElementsByClassName("tmw-spacer-right")) {
+      element.style.display = "none";
+    }
   } else {
     noteHalf.style.display = "flex";
     seperatorIcon.style.display = "block";
-    commentHalf.style.width = savedWidth;
+    commentHalf.style.flex = "";
+    for (var element of document.getElementsByClassName("tmw-spacer-right")) {
+      element.style.display = "block";
+    }
   }
   var ratio = window.innerWidth / width;
   commentHalf.style.width = commentHalf.offsetWidth * ratio + "px";
@@ -142,4 +146,10 @@ seperatorIcon.addEventListener("mousedown", (event) => {
   });
 
   mouseX = event.clientX;
+});
+
+seperatorIcon.addEventListener("dblclick", () => {
+  elementX = 0;
+  mouseX = 0;
+  commentHalf.style.width = "50%";
 });

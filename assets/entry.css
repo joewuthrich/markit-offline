@@ -2,7 +2,7 @@
   background: var(--container-background-color);
   -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
-  width: 70%;
+  width: 80%;
   height: 205px;
   border-radius: 20px;
   display: flex;

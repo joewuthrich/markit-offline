@@ -75,11 +75,16 @@ body {
 
 #tmw-seperator-icon {
   position: absolute;
-  right: -12.5px;
+  right: -52.5px;
   z-index: 3;
 }
 
 .tmw-seperator-container {
   width: 25px;
   height: 25px;
+}
+
+.tmw-main-spacer {
+  width: 40px;
+  height: 0px;
 }

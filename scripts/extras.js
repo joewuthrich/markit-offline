@@ -105,8 +105,11 @@ function onDrag(event) {
   if (commentHalf.offsetWidth - elementX < 475) {
     commentHalf.style.width = 476 + "px";
     return;
-  } else if (window.innerWidth - (commentHalf.offsetWidth - elementX) < 475) {
-    commentHalf.style.width = window.innerWidth - 476 + "px";
+  } else if (
+    window.innerWidth - (commentHalf.offsetWidth - elementX + 4 * 40) <
+    475
+  ) {
+    commentHalf.style.width = window.innerWidth - 476 - 4 * 40 + "px";
     return;
   }
   commentHalf.style.width = commentHalf.offsetWidth - elementX + "px";

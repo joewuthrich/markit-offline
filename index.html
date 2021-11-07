@@ -8,36 +8,59 @@
     <link rel="stylesheet" type="text/css" href="./assets/menu.css" />
     <link rel="stylesheet" type="text/css" href="./assets/entry.css" />
     <link rel="stylesheet" type="text/css" href="./assets/modal.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/notes.css" />
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
     <title>Comment Tracker</title>
   </head>
   <body id="tmw-body">
-      <div class="tmw-header-menu-container">
-        <div class="tmw-header-menu-inner-container">
-          <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
-          <div class="tmw-menu-element" id="tmw-import-json">IMPORT FROM .JSON</div>
-          <div class="tmw-menu-element">VIEW GRAPH</div>
-          <div class="tmw-page-name-container">
-            <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
-            <svg data-layer="9a724ebb-647e-427d-a2be-932a346612f1" preserveAspectRatio="none" 
-            viewBox="8 5 11 14" class="tmw-dropdown-icon">
-              <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
-            </svg>
+    <div class="tmw-header-menu-container">
+      <div class="tmw-header-menu-inner-container">
+        <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
+        <div class="tmw-menu-element" id="tmw-import-json">
+          IMPORT FROM .JSON
+        </div>
+        <div class="tmw-menu-element">VIEW GRAPH</div>
+        <div class="tmw-page-name-container">
+          <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
+          <svg
+            data-layer="9a724ebb-647e-427d-a2be-932a346612f1"
+            preserveAspectRatio="none"
+            viewBox="8 5 11 14"
+            class="tmw-dropdown-icon"
+          >
+            <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
+          </svg>
+        </div>
+        <div class="tmw-menu-element" id="tmw-dark-mode-toggle">DARK MODE</div>
+        <div id="tmw-export-json" class="tmw-menu-element">EXPORT TO .JSON</div>
+        <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
+      </div>
+    </div>
+
+    <div id="tmw-main-container">
+      <div class="tmw-half-container">
+        <div class="tmw-comment-entry-container">
+          <div class="tmw-comment-entry-area-container">
+            <textarea
+              id="tmw-comment-entry-area"
+              class="tmw-comment-entry-area"
+              placeholder="¶"
+            ></textarea>
           </div>
-          <div class="tmw-menu-element" id="tmw-dark-mode-toggle">DARK MODE</div>
-          <div id="tmw-export-json" class="tmw-menu-element">EXPORT TO .JSON</div>
-          <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
+          <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">
+            SUBMIT
+          </div>
+        </div>
+
+        <div id="tmw-comment-containers-outer"></div>
+      </div>
+      <div class="tmw-half-container">
+        <div id="tmw-note-container-outer">
+          <div id="tmw-note-container-inner">
+            <div id="tmw-note-container" contenteditable="true"></div>
+          </div>
         </div>
       </div>
-
-      <div class="tmw-comment-entry-container">
-        <div class="tmw-comment-entry-area-container">
-          <textarea id="tmw-comment-entry-area" class="tmw-comment-entry-area" placeholder="¶"></textarea>
-        </div>
-        <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">SUBMIT</div>
-      </div>
-
-      <div id="tmw-comment-containers-outer"></div>
     </div>
     <script type="module" src="./scripts/extras.js"></script>
     <script type="module" src="./scripts/add-comments.js"></script>

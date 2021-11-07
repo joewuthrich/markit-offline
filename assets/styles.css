@@ -36,3 +36,25 @@ body {
   font-family: opensans_regular;
   src: url(./OpenSans-Regular.ttf);
 }
+
+.tmw-half-container {
+  margin-top: 10vh;
+  width: 50%;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+}
+
+#tmw-main-container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  display: flex;
+}

@@ -1,0 +1,32 @@
+#tmw-note-container-outer {
+  width: 90%;
+  height: 95%;
+  margin-bottom: 5%;
+  background: var(--container-background-color);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#tmw-note-container-inner {
+  border-radius: 20px;
+  background: var(--main-background-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  height: 95%;
+}
+
+#tmw-note-container {
+  background: inherit;
+  width: 95%;
+  height: 95%;
+  overflow: auto;
+}
+
+[contenteditable] {
+  outline: 0px solid transparent !important;
+}

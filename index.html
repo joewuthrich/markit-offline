@@ -9,6 +9,10 @@
     <link rel="stylesheet" type="text/css" href="./assets/entry.css" />
     <link rel="stylesheet" type="text/css" href="./assets/modal.css" />
     <link rel="stylesheet" type="text/css" href="./assets/notes.css" />
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
     <title>Comment Tracker</title>
   </head>
@@ -78,7 +82,9 @@
             <div class="tmw-note-container-inner">
               <div class="tmw-note-container-col">
                 <div class="tmw-note-container-inner">
-                  <div id="tmw-note-container" contenteditable="true"></div>
+                  <div class="tmw-note-container-inner-inner">
+                    <div id="tmw-note-container"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -87,6 +93,7 @@
       </div>
       <div class="tmw-main-spacer tmw-spacer-right"></div>
     </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script type="module" src="./scripts/extras.js"></script>
     <script type="module" src="./scripts/add-comments.js"></script>
     <script type="module" src="./scripts/pages.js"></script>

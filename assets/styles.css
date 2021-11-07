@@ -88,3 +88,8 @@ body {
   width: 40px;
   height: 0px;
 }
+
+.ql-toolbar,
+.ql-container {
+  border: 0px solid transparent !important;
+}

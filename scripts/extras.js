@@ -156,3 +156,19 @@ seperatorIcon.addEventListener("dblclick", () => {
   mouseX = 0;
   commentHalf.style.width = "50%";
 });
+
+/**
+ * Include the Quill editor
+ */
+var quill = new Quill("#tmw-note-container", {
+  modules: {
+    toolbar: [
+      [{ header: [1, 2, false] }],
+      ["bold", "italic", "underline"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["image", "code-block"],
+    ],
+  },
+  placeholder: "Write notes here...",
+  theme: "snow",
+});

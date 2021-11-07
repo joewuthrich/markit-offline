@@ -1,5 +1,8 @@
 import UploadModal from "./elements/modals/UploadModal.js";
 
+/**
+ * Setting up dark mode
+ */
 let darkMode = false;
 let data = JSON.parse(localStorage.getItem("comment-data"));
 if (data["𝕕𝕕-Dark𝕕Mo𝕕e"]) toggleDark();
@@ -50,6 +53,9 @@ function toggleDark() {
   localStorage.setItem("comment-data", JSON.stringify(data));
 }
 
+/**
+ * Importing and exporting JSON files
+ */
 document
   .getElementById("tmw-export-json")
   .addEventListener("click", function () {
@@ -85,3 +91,40 @@ document
   .addEventListener("click", function () {
     new UploadModal();
   });
+
+const seperatorIcon = document.getElementById("tmw-seperator-icon");
+const commentHalf = document.getElementById("tmw-half-comment-container");
+const noteHalf = document.getElementById("tmw-half-note-container");
+var elementX = 0,
+  mouseX = 0;
+var width = window.innerWidth;
+
+function onDrag(event) {
+  event.preventDefault();
+  elementX = mouseX - event.clientX;
+  mouseX = event.clientX;
+  seperatorIcon.style.left = seperatorIcon.offsetLeft - elementX + "px";
+  commentHalf.style.width = seperatorIcon.offsetLeft - elementX + "px";
+  width = window.innerWidth;
+  noteHalf.style.width =
+    width - seperatorIcon.offsetLeft - elementX - 25 + "px";
+}
+
+window.addEventListener("resize", () => {
+  var ratio = window.innerWidth / width;
+  console.log(commentHalf.offsetWidth);
+  seperatorIcon.style.left = seperatorIcon.offsetLeft * ratio + "px";
+  commentHalf.style.width = commentHalf.offsetWidth * ratio + "px";
+  noteHalf.style.width = noteHalf.offsetWidth * ratio + "px";
+  width = window.innerWidth;
+});
+
+seperatorIcon.addEventListener("mousedown", (event) => {
+  document.addEventListener("mousemove", onDrag);
+
+  document.addEventListener("mouseup", () => {
+    document.removeEventListener("mousemove", onDrag);
+  });
+
+  mouseX = event.clientX;
+});

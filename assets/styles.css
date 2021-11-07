@@ -25,6 +25,7 @@ body {
   align-items: center;
   flex-direction: column;
   background-color: var(--main-background-color);
+  position: relative;
 }
 
 @font-face {
@@ -45,7 +46,6 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  flex: 1;
 }
 
 #tmw-main-container {
@@ -68,9 +68,6 @@ body {
 }
 
 .tmw-seperator-icon {
-  position: absolute;
-  top: 10px;
-  left: -10px;
   width: 25px;
   height: 25px;
   transform: rotate(90deg);
@@ -80,4 +77,13 @@ body {
 .tmw-seperator-icon:hover {
   fill: var(--text-hover-color);
   cursor: pointer;
+}
+
+#tmw-seperator-icon {
+  position: absolute;
+}
+
+.tmw-seperator-container {
+  width: 25px;
+  height: 25px;
 }

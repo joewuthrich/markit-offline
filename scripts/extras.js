@@ -96,28 +96,43 @@ const seperatorIcon = document.getElementById("tmw-seperator-icon");
 const commentHalf = document.getElementById("tmw-half-comment-container");
 const noteHalf = document.getElementById("tmw-half-note-container");
 var elementX = 0,
-  mouseX = 0;
+  mouseX = 0,
+  savedWidth = "50%";
 var width = window.innerWidth;
 
 function onDrag(event) {
   event.preventDefault();
   elementX = mouseX - event.clientX;
+  if (commentHalf.offsetWidth - elementX < 469) {
+    commentHalf.style.width = 470 + "px";
+    return;
+  } else if (window.innerWidth - (commentHalf.offsetWidth - elementX) < 469) {
+    commentHalf.style.width = window.innerWidth - 470 + "px";
+    return;
+  }
   mouseX = event.clientX;
-  seperatorIcon.style.left = seperatorIcon.offsetLeft - elementX + "px";
-  commentHalf.style.width = seperatorIcon.offsetLeft - elementX + "px";
+  savedWidth = commentHalf.style.width =
+    commentHalf.offsetWidth - elementX + "px";
   width = window.innerWidth;
-  noteHalf.style.width =
-    width - seperatorIcon.offsetLeft - elementX - 25 + "px";
 }
 
-window.addEventListener("resize", () => {
+window.addEventListener("resize", resizeElements);
+window.addEventListener("load", resizeElements);
+
+function resizeElements() {
+  if (window.innerWidth < 940) {
+    noteHalf.style.display = "none";
+    seperatorIcon.style.display = "none";
+    commentHalf.style.width = "100%";
+  } else {
+    noteHalf.style.display = "flex";
+    seperatorIcon.style.display = "block";
+    commentHalf.style.width = savedWidth;
+  }
   var ratio = window.innerWidth / width;
-  console.log(commentHalf.offsetWidth);
-  seperatorIcon.style.left = seperatorIcon.offsetLeft * ratio + "px";
   commentHalf.style.width = commentHalf.offsetWidth * ratio + "px";
-  noteHalf.style.width = noteHalf.offsetWidth * ratio + "px";
   width = window.innerWidth;
-});
+}
 
 seperatorIcon.addEventListener("mousedown", (event) => {
   document.addEventListener("mousemove", onDrag);

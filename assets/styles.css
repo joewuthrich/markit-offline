@@ -46,6 +46,8 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  min-width: 470px;
 }
 
 #tmw-main-container {
@@ -53,18 +55,10 @@ body {
   height: 100vh;
   position: absolute;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   top: 0;
   left: 0;
   display: flex;
-}
-
-#tmw-half-container-seperator {
-  width: 0px;
-  height: 40px;
-  background: transparent;
-  position: relative;
-  overflow: visible;
 }
 
 .tmw-seperator-icon {
@@ -81,6 +75,8 @@ body {
 
 #tmw-seperator-icon {
   position: absolute;
+  right: -12.5px;
+  z-index: 3;
 }
 
 .tmw-seperator-container {

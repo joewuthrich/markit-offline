@@ -8,39 +8,114 @@
     <link rel="stylesheet" type="text/css" href="./assets/menu.css" />
     <link rel="stylesheet" type="text/css" href="./assets/entry.css" />
     <link rel="stylesheet" type="text/css" href="./assets/modal.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/notes.css" />
+    <link
+      href="https://cdn.quilljs.com/1.3.6/quill.snow.css"
+      rel="stylesheet"
+    />
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script> -->
     <title>Comment Tracker</title>
   </head>
   <body id="tmw-body">
-      <div class="tmw-header-menu-container">
-        <div class="tmw-header-menu-inner-container">
-          <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
-          <div class="tmw-menu-element" id="tmw-import-json">IMPORT FROM .JSON</div>
-          <div class="tmw-menu-element">VIEW GRAPH</div>
-          <div class="tmw-page-name-container">
-            <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
-            <svg data-layer="9a724ebb-647e-427d-a2be-932a346612f1" preserveAspectRatio="none" 
-            viewBox="8 5 11 14" class="tmw-dropdown-icon">
-              <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
-            </svg>
-          </div>
-          <div class="tmw-menu-element" id="tmw-dark-mode-toggle">DARK MODE</div>
-          <div id="tmw-export-json" class="tmw-menu-element">EXPORT TO .JSON</div>
-          <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
+    <div class="tmw-header-menu-container">
+      <div class="tmw-header-menu-inner-container">
+        <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
+        <div class="tmw-menu-element" id="tmw-import-json">
+          IMPORT FROM .JSON
         </div>
-      </div>
-
-      <div class="tmw-comment-entry-container">
-        <div class="tmw-comment-entry-area-container">
-          <textarea id="tmw-comment-entry-area" class="tmw-comment-entry-area" placeholder="¶"></textarea>
+        <div class="tmw-menu-element">VIEW GRAPH</div>
+        <div class="tmw-page-name-container">
+          <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
+          <svg
+            data-layer="9a724ebb-647e-427d-a2be-932a346612f1"
+            preserveAspectRatio="none"
+            viewBox="8 5 11 14"
+            class="tmw-dropdown-icon"
+          >
+            <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
+          </svg>
         </div>
-        <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">SUBMIT</div>
+        <div class="tmw-menu-element" id="tmw-dark-mode-toggle">DARK MODE</div>
+        <div id="tmw-export-json" class="tmw-menu-element">EXPORT TO .JSON</div>
+        <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
       </div>
-
-      <div id="tmw-comment-containers-outer"></div>
     </div>
+
+    <div id="tmw-main-container">
+      <div class="tmw-main-spacer"></div>
+      <div class="tmw-half-container" id="tmw-half-comment-container">
+        <div class="tmw-comment-entry-container">
+          <div class="tmw-comment-entry-area-container">
+            <textarea
+              id="tmw-comment-entry-area"
+              class="tmw-comment-entry-area"
+              placeholder="¶"
+            ></textarea>
+          </div>
+          <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">
+            SUBMIT
+          </div>
+        </div>
+
+        <div id="tmw-comment-containers-outer"></div>
+        <div id="tmw-seperator-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="tmw-seperator-icon"
+            viewBox="0 0 50 50"
+          >
+            <path
+              d="M 24.875 0 C 24.652344 0.0234375 24.441406 0.125 24.28125 
+              0.28125 L 17.28125 7.28125 C 16.984375 7.566406 16.894531 8.007813 
+              17.054688 8.386719 C 17.210938 8.765625 17.589844 9.007813 18 9 L 32 
+              9 C 32.410156 9.007813 32.789063 8.765625 32.945313 8.386719 C 33.105469 
+              8.007813 33.015625 7.566406 32.71875 7.28125 L 25.71875 0.28125 C 
+              25.496094 0.0625 25.183594 -0.0429688 24.875 0 Z M 25 2.4375 L 29.5625 
+              7 L 20.4375 7 Z M 2 14 L 2 16 L 48 16 L 48 14 Z M 2 24 L 2 26 L 48 26 
+              L 48 24 Z M 2 34 L 2 36 L 48 36 L 48 34 Z M 17.8125 41 C 17.433594 
+              41.058594 17.121094 41.328125 17.007813 41.691406 C 16.894531 42.058594 
+              17 42.457031 17.28125 42.71875 L 24.28125 49.71875 C 24.46875 49.914063 
+              24.730469 50.023438 25 50.023438 C 25.269531 50.023438 25.53125 49.914063 
+              25.71875 49.71875 L 32.71875 42.71875 C 33.015625 42.433594 33.105469 41.992188 
+              32.945313 41.613281 C 32.789063 41.234375 32.410156 40.992188 32 41 L 18 
+              41 C 17.96875 41 17.9375 41 17.90625 41 C 17.875 41 17.84375 41 17.8125 
+              41 Z M 20.4375 43 L 29.5625 43 L 25 47.5625 Z"
+            />
+          </svg>
+        </div>
+      </div>
+      <div class="tmw-main-spacer"></div>
+      <div class="tmw-main-spacer tmw-spacer-right"></div>
+      <div
+        class="tmw-half-container"
+        id="tmw-half-note-container"
+        style="flex: 1"
+      >
+        <div id="tmw-note-container-outer">
+          <div class="tmw-note-container-col">
+            <div class="tmw-main-spacer"></div>
+            <div class="tmw-note-container-inner">
+              <div class="tmw-note-container-col">
+                <div class="tmw-note-container-inner">
+                  <div
+                    class="tmw-note-container-inner-inner"
+                    id="tmw-note-container-inner-inner"
+                  >
+                    <div id="tmw-note-container"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tmw-main-spacer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tmw-main-spacer tmw-spacer-right"></div>
+    </div>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script type="module" src="./scripts/extras.js"></script>
     <script type="module" src="./scripts/add-comments.js"></script>
     <script type="module" src="./scripts/pages.js"></script>
+    <script type="module" src="./scripts/notes.js"></script>
   </body>
 </html>

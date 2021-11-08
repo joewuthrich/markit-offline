@@ -6,8 +6,11 @@ var editor;
  * Setting up dark mode
  */
 let darkMode = false;
-let data = JSON.parse(localStorage.getItem("comment-data"));
-if (data["𝕕𝕕-Dark𝕕Mo𝕕e"]) toggleDark();
+var data = localStorage.getItem("comment-data");
+if (data == undefined) data = {};
+else data = JSON.parse(data);
+
+if (data["𝕕"]) toggleDark();
 
 document
   .getElementById("tmw-dark-mode-toggle")
@@ -51,7 +54,7 @@ function toggleDark() {
   }
 
   data = JSON.parse(localStorage.getItem("comment-data"));
-  data["𝕕𝕕-Dark𝕕Mo𝕕e"] = darkMode;
+  data["𝕕"] = darkMode;
   localStorage.setItem("comment-data", JSON.stringify(data));
 }
 
@@ -94,6 +97,9 @@ document
     new UploadModal();
   });
 
+/**
+ * Make the seperator of the two boxes work
+ */
 const seperatorIcon = document.getElementById("tmw-seperator-icon");
 const commentHalf = document.getElementById("tmw-half-comment-container");
 const noteHalf = document.getElementById("tmw-half-note-container");

@@ -36,6 +36,7 @@ export default class NewPageModal extends Modal {
   submitPage() {
     var textbox = this.querySelector(".tmw-comment-entry-area");
     if (textbox.value == "") return;
+    if (textbox.value.includes("𝕕")) return;
 
     document
       .getElementById("tmw-comment-containers-outer")

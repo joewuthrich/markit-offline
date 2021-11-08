@@ -12,18 +12,24 @@ export default class CommentPage extends HTMLElement {
     if (data == undefined) data = {};
     else data = JSON.parse(data);
 
-    let comments = data[name + "𝕕𝕕"] ? data[name + "𝕕𝕕"] : [];
+    let comments = data[name + "𝕕𝕕"] ? data[name + "𝕕𝕕"] : [[""]];
     commentList.forEach((value) => {
       if (!(value in comments)) comments.append(value);
     });
     var biggestID = 0;
     for (var comment of comments) {
+      if (comment[0] == 0) continue;
       biggestID = comment[0];
       this.appendChild(
         new Comment(comment[0], comment[1], comment[2], comment[3])
       );
     }
-    data[name + "𝕕𝕕"] = comments;
+    data[this.name + "𝕕𝕕"] = comments;
+    data["𝕕𝕕𝕕"] = this.name;
+
+    var editor = document.getElementsByClassName("ql-editor")[0];
+    editor.innerHTML = comments[0];
+
     this.sortComments();
     this.commentCount = parseInt(biggestID) + 1;
     localStorage.setItem("comment-data", JSON.stringify(data));
@@ -87,9 +93,10 @@ export default class CommentPage extends HTMLElement {
   updateStorage() {
     let data = JSON.parse(localStorage.getItem("comment-data"));
     if (data == null) data = {};
-    data[this.name + "𝕕𝕕"] = Array.from(this.children, (item) =>
-      item.toArray()
-    );
+    data[this.name + "𝕕𝕕"] = [
+      "",
+      ...Array.from(this.children, (item) => item.toArray()),
+    ];
     localStorage.setItem("comment-data", JSON.stringify(data));
   }
 

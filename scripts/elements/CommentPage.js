@@ -18,7 +18,7 @@ export default class CommentPage extends HTMLElement {
     });
     var biggestID = 0;
     for (var comment of comments) {
-      if (comment[0] == 0) continue;
+      if (comments[0] == comment) continue;
       biggestID = comment[0];
       this.appendChild(
         new Comment(comment[0], comment[1], comment[2], comment[3])

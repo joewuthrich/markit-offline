@@ -17,12 +17,14 @@ export default class CommentPage extends HTMLElement {
       if (!(value in comments)) comments.append(value);
     });
     var biggestID = 0;
-    for (var comment of comments) {
-      if (comments[0] == comment) continue;
-      biggestID = comment[0];
-      this.appendChild(
-        new Comment(comment[0], comment[1], comment[2], comment[3])
-      );
+    if (comments.length > 1) {
+      for (var comment of comments) {
+        if (comments[0] == comment) continue;
+        biggestID = comment[1];
+        this.appendChild(
+          new Comment(comment[0], comment[1], comment[2], comment[3])
+        );
+      }
     }
     data[this.name + "𝕕𝕕"] = comments;
     data["𝕕𝕕𝕕"] = this.name;

@@ -13,11 +13,12 @@ export default class CommentPage extends HTMLElement {
     this.name = name;
     this.current = false;
     this.style = "width: 100%; height: 100%;display:block;";
-    this.sort = ID_ASC;
 
     var data = localStorage.getItem("comment-data");
     if (data == undefined) data = {};
     else data = JSON.parse(data);
+
+    data["𝕕𝕕𝕕𝕕"] == null ? (this.sort = 0) : (this.sort = data["𝕕𝕕𝕕𝕕"]);
 
     let comments = data[name + "𝕕𝕕"] ? data[name + "𝕕𝕕"] : [[""]];
     commentList.forEach((value) => {
@@ -60,6 +61,7 @@ export default class CommentPage extends HTMLElement {
     data[this.name + "𝕕𝕕"].push(comment.toArray());
     this.appendChild(comment);
     localStorage.setItem("comment-data", JSON.stringify(data));
+    this.sortComments();
     return true;
   }
 
@@ -78,6 +80,7 @@ export default class CommentPage extends HTMLElement {
 
   sortComments() {
     let children = [].slice.call(this.childNodes);
+    console.log(this.sort);
     children
       .sort((comment1, comment2) => {
         switch (this.sort) {

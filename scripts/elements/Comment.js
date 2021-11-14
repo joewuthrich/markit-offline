@@ -32,6 +32,7 @@ export default class Comment extends HTMLElement {
       );
     });
 
+    // HTML injection doesn't matter, static webpage for now
     this.innerHTML =
       `
           <div class="tmw-comment">` +

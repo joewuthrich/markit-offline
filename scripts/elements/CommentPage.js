@@ -1,4 +1,10 @@
 import Comment from "./Comment.js";
+const ID_ASC = 0;
+const ID_DESC = 1;
+const ALPHA_ASC = 2;
+const ALPHA_DESC = 3;
+const USE_ASC = 4;
+const USE_DESC = 5;
 
 export default class CommentPage extends HTMLElement {
   constructor(name, commentList = []) {
@@ -7,6 +13,7 @@ export default class CommentPage extends HTMLElement {
     this.name = name;
     this.current = false;
     this.style = "width: 100%; height: 100%;display:block;";
+    this.sort = ID_ASC;
 
     var data = localStorage.getItem("comment-data");
     if (data == undefined) data = {};
@@ -72,15 +79,74 @@ export default class CommentPage extends HTMLElement {
   sortComments() {
     let children = [].slice.call(this.childNodes);
     children
-      .sort(function (comment1, comment2) {
-        if (comment1.favourite && comment2.favourite) {
-          if (comment1.id < comment2.id) return -1;
-          if (comment1.id > comment2.id) return 1;
-        } else if (comment1.favourite) return -1;
-        else if (comment2.favourite) return 1;
-        else {
-          if (comment1.id < comment2.id) return -1;
-          if (comment1.id > comment2.id) return 1;
+      .sort((comment1, comment2) => {
+        switch (this.sort) {
+          case ID_ASC:
+            if (comment1.favourite && comment2.favourite) {
+              if (comment1.id < comment2.id) return -1;
+              if (comment1.id > comment2.id) return 1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return 1;
+            else {
+              if (comment1.id < comment2.id) return -1;
+              if (comment1.id > comment2.id) return 1;
+            }
+            break;
+          case ID_DESC:
+            if (comment1.favourite && comment2.favourite) {
+              if (comment1.id < comment2.id) return 1;
+              if (comment1.id > comment2.id) return -1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return 1;
+            else {
+              if (comment1.id < comment2.id) return 1;
+              if (comment1.id > comment2.id) return -1;
+            }
+            break;
+          case ALPHA_ASC:
+            if (comment1.favourite && comment2.favourite) {
+              if (comment1.text < comment2.text) return -1;
+              if (comment1.text > comment2.text) return 1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return 1;
+            else {
+              if (comment1.text < comment2.text) return -1;
+              if (comment1.text > comment2.text) return 1;
+            }
+            break;
+          case ALPHA_DESC:
+            if (comment1.favourite && comment2.favourite) {
+              if (comment1.text < comment2.text) return 1;
+              if (comment1.text > comment2.text) return -1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return 1;
+            else {
+              if (comment1.text < comment2.text) return 1;
+              if (comment1.text > comment2.text) return -1;
+            }
+            break;
+          case USE_ASC:
+            if (comment1.favourite && comment2.favourite) {
+              if (comment1.count < comment2.count) return 1;
+              if (comment1.count > comment2.count) return -1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return 1;
+            else {
+              if (comment1.count < comment2.count) return -1;
+              if (comment1.count > comment2.count) return 1;
+            }
+            break;
+          case USE_DESC:
+            if (comment1.favourite && comment2.favourite) {
+              if (comment1.count < comment2.count) return -1;
+              if (comment1.count > comment2.count) return 1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return 1;
+            else {
+              if (comment1.count < comment2.count) return 1;
+              if (comment1.count > comment2.count) return -1;
+            }
+            break;
         }
       })
       .forEach((child) => this.appendChild(child));

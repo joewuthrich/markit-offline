@@ -35,7 +35,7 @@ function toggleDark() {
     "rgb(255, 255, 255)",
     "rgb(196, 196, 196)",
     "rgb(79, 119, 151)",
-    "rgba(255, 255, 255, 0.1)",
+    "rgba(0, 0, 0, 0.6)",
     "rgb(105, 129, 148)",
   ];
   let lightColors = [

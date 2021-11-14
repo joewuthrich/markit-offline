@@ -40,8 +40,7 @@ body {
 }
 
 .tmw-half-container {
-  margin-top: 10vh;
-  width: 50%;
+  width: calc(50vw / 2 - 80px);
   height: 90vh;
   display: flex;
   justify-content: center;
@@ -53,11 +52,11 @@ body {
 
 #tmw-main-container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 60px);
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  top: 0;
+  top: 60px;
   left: 0;
   display: flex;
 }

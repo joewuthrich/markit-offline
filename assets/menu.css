@@ -1,8 +1,5 @@
 .tmw-header-menu-container {
-  background: var(--menu-background-color);
   width: 70%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,7 +11,7 @@
 
 .tmw-header-menu-inner-container {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   width: 100%;
 }
@@ -23,30 +20,45 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: rgb(255, 255, 255);
-  fill: rgb(255, 255, 255);
-  height: 200px;
+  color: var(--menu-item-color);
+  fill: var(--menu-item-color);
 }
 
 .tmw-menu-element {
   font-family: opensans_semibold, Arial;
-  font-size: 1.1vw;
-  font-weight: 700;
-  color: rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: 200;
+  color: var(--menu-item-color);
   padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
   text-align: center;
   user-select: none;
 }
 
 .tmw-menu-element:hover,
 .tmw-page-name-container:hover {
-  color: rgb(219, 219, 219);
-  fill: rgb(219, 219, 219);
+  color: var(--menu-item-color-hover);
+  fill: var(--menu-item-color-hover);
   cursor: pointer;
 }
 
+.tmw-menu-inner-menu-element {
+  display: flex;
+  align-items: center;
+  width: 40%;
+}
+
+.tmw-menu-inner-left {
+  justify-content: flex-end;
+}
+
+.tmw-menu-inner-right {
+  justify-content: flex-start;
+}
+
 .tmw-main-page-name {
-  font-size: 1.3vw;
+  font-size: 20px;
   padding-bottom: 3px;
   color: inherit;
 }
@@ -54,7 +66,7 @@
 .tmw-dropdown-icon {
   transform: rotate(90deg);
   fill: inherit;
-  width: 0.7vw;
+  width: 8px;
   padding-right: 10px;
 }
 

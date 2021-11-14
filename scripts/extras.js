@@ -6,17 +6,16 @@ var editor;
  * Setting up dark mode
  */
 let darkMode = false;
+const darkModeButton = document.getElementById("tmw-dark-mode-toggle");
 var data = localStorage.getItem("comment-data");
 if (data == undefined) data = {};
 else data = JSON.parse(data);
 
 if (data["𝕕"]) toggleDark();
 
-document
-  .getElementById("tmw-dark-mode-toggle")
-  .addEventListener("click", function () {
-    toggleDark();
-  });
+darkModeButton.addEventListener("click", function () {
+  toggleDark();
+});
 
 function toggleDark() {
   darkMode = !darkMode;
@@ -26,24 +25,27 @@ function toggleDark() {
     "--container-background-color",
     "--text-color",
     "--text-hover-color",
-    "--menu-background-color",
+    "--menu-item-color",
     "--modal-background-color",
+    "--menu-item-color-hover",
   ];
   let darkColors = [
     "#131313",
     "rgb(0, 0, 0)",
     "rgb(255, 255, 255)",
     "rgb(196, 196, 196)",
-    "rgb(7, 60, 104)",
+    "rgb(79, 119, 151)",
     "rgba(255, 255, 255, 0.1)",
+    "rgb(105, 129, 148)",
   ];
   let lightColors = [
     "rgb(238, 238, 238)",
     "rgb(255, 255, 255)",
     "rgb(0, 0, 0)",
     "rgb(80, 80, 80)",
-    "rgb(27, 100, 158)",
+    "rgba(27, 100, 158, 1)",
     "rgba(0, 0, 0, 0.8)",
+    "rgb(15, 58, 94)",
   ];
 
   for (let i = 0; i < properties.length; i++) {
@@ -52,6 +54,9 @@ function toggleDark() {
       darkMode ? darkColors[i] : lightColors[i]
     );
   }
+
+  if (darkMode) darkModeButton.innerHTML = "LIGHT MODE";
+  else darkModeButton.innerHTML = "DARK MODE";
 
   data = JSON.parse(localStorage.getItem("comment-data"));
   data["𝕕"] = darkMode;
@@ -106,6 +111,7 @@ const noteHalf = document.getElementById("tmw-half-note-container");
 var elementX = 0,
   mouseX = 0;
 var width = window.innerWidth;
+commentHalf.style.width = window.innerWidth / 2 - 80 + "px";
 
 function onDrag(event) {
   event.preventDefault();
@@ -166,7 +172,8 @@ seperatorIcon.addEventListener("mousedown", (event) => {
 seperatorIcon.addEventListener("dblclick", () => {
   elementX = 0;
   mouseX = 0;
-  commentHalf.style.width = "50%";
+  commentHalf.style.width = window.innerWidth / 2 - 80 + "px";
+  console.log(window.innerWidth / 2 - 80);
   fixEditorDimensions();
 });
 

@@ -30,8 +30,8 @@ function toggleDark() {
     "--menu-item-color-hover",
   ];
   let darkColors = [
-    "#131313",
-    "rgb(0, 0, 0)",
+    "rgb(19, 19, 19)",
+    "rgb(36, 36, 36)",
     "rgb(255, 255, 255)",
     "rgb(196, 196, 196)",
     "rgb(79, 119, 151)",

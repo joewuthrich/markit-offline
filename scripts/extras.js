@@ -213,6 +213,37 @@ function fixEditorDimensions() {
     "px";
 }
 
+window.addEventListener("load", function () {
+  var data = localStorage.getItem("comment-data");
+  if (data == undefined) data = {};
+  else data = JSON.parse(data);
+
+  data["𝕕𝕕𝕕𝕕"] == null ? (data["𝕕𝕕𝕕𝕕"] = 0) : data["𝕕𝕕𝕕𝕕"];
+
+  var display = document.getElementById("tmw-sort-page");
+
+  switch (data["𝕕𝕕𝕕𝕕"]) {
+    case 0:
+      display.innerHTML = "SORT: TIME ASC";
+      break;
+    case 1:
+      display.innerHTML = "SORT: TIME DESC";
+      break;
+    case 2:
+      display.innerHTML = "SORT: ALPHABETICALLY ASC";
+      break;
+    case 3:
+      display.innerHTML = "SORT: ALPHABETICALLY DESC";
+      break;
+    case 4:
+      display.innerHTML = "SORT: COUNT ASC";
+      break;
+    case 5:
+      display.innerHTML = "SORT: COUNT DESC";
+      break;
+  }
+});
+
 document.getElementById("tmw-sort-page").addEventListener("click", function () {
   var data = localStorage.getItem("comment-data");
   if (data == undefined) data = {};
@@ -244,7 +275,7 @@ document.getElementById("tmw-sort-page").addEventListener("click", function () {
       this.innerHTML = "SORT: COUNT ASC";
       break;
     case 5:
-      this.innerHTML = "SORT: COUNT ASC";
+      this.innerHTML = "SORT: COUNT DESC";
       break;
   }
 

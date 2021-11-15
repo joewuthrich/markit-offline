@@ -52,11 +52,11 @@ body {
 
 #tmw-main-container {
   width: 100vw;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 77px);
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  top: 100px;
+  top: 77px;
   left: 0;
   display: flex;
 }

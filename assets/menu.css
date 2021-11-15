@@ -5,7 +5,7 @@
   align-items: center;
   overflow: visible;
   z-index: 2;
-  height: 100px;
+  height: 70px;
 }
 
 .tmw-header-menu-inner-container {
@@ -13,40 +13,46 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: var(--menu-item-color);
   border-radius: 20px;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
-  overflow: hidden;
+  overflow: visible;
   padding-top: 7px;
   padding-bottom: 7px;
   min-width: 550px;
+  position: relative;
 }
+
+/* .tmw-header-menu-inner-container::after {
+  position: absolute;
+  bottom: 0px;
+  border-top: 0.1px solid var(--container-background-color);
+  width: 100%;
+  content: "";
+} */
 
 .tmw-page-name-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: var(--container-background-color);
-  fill: var(--container-background-color);
+  color: var(--menu-item-color);
+  fill: var(--menu-item-color);
 }
 
 .tmw-menu-element {
   font-family: opensans_semibold, Arial;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 200;
-  color: var(--container-background-color);
+  color: var(--menu-item-color);
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
   text-align: center;
   user-select: none;
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
 }
 
 .tmw-menu-element:hover,
 .tmw-page-name-container:hover {
-  color: var(--main-background-color);
-  fill: var(--main-background-color);
+  color: var(--menu-item-color-hover);
+  fill: var(--menu-item-color-hover);
   cursor: pointer;
 }
 

@@ -35,7 +35,7 @@
 }
 
 .tmw-new-page-modal-header {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   margin-right: auto;
   padding-left: 25px;
@@ -49,6 +49,17 @@
   padding-top: 25px;
   color: var(--text-color);
   padding-bottom: 10px;
+}
+
+.tmw-delete-page-modal-header {
+  font-size: 22px;
+  font-weight: 700;
+  padding-top: 25px;
+  color: var(--text-color);
+  padding-bottom: 10px;
+  text-align: center;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .tmw-upload-modal-header {
@@ -114,4 +125,37 @@
   padding-bottom: 30px;
   margin-right: 0px;
   padding-left: 0px;
+}
+
+#tmw-search-page-list {
+  height: 400px;
+  width: calc(100% - 50px);
+  margin-bottom: 10px;
+}
+
+.tmw-page-name-elem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.tmw-page-name-name {
+  font-size: 18px;
+  font-weight: 400;
+  font-family: opensans_regular, Arial;
+  max-width: 80%;
+  color: var(--text-color);
+}
+
+.tmw-page-name-name:hover {
+  color: var(--text-hover-color);
+  cursor: pointer;
+}
+
+.tmw-new-page-delete-icon {
+  min-width: 12px;
+  min-height: 12px;
+  width: 12px;
+  height: 12px;
 }

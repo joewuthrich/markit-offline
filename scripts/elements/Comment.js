@@ -19,9 +19,12 @@ export default class Comment extends HTMLElement {
         event.target == icons[2] ||
         event.target == icons[3] ||
         event.target == icons[4] ||
-        event.target == icons[2].children[0]
+        event.target == icons[2].children[0] ||
+        event.target == icons[3].children[0] ||
+        event.target == icons[4].children[0]
       )
         return;
+      console.log(event.target);
       navigator.clipboard.writeText(this.children[0].textContent).then(
         () => {
           this.count++;

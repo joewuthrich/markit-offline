@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
 });
 
 document.getElementById("tmw-new-page").addEventListener("click", function () {
-  var newPageModal = new NewPageModal();
+  new NewPageModal();
 });
 
 document

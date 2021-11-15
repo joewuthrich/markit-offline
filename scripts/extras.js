@@ -189,7 +189,7 @@ window.addEventListener("load", () => {
         ["image", "code-block"],
       ],
     },
-    placeholder: "Write notes here...",
+    placeholder: "Write notes here ¶",
     theme: "snow",
     scrollingContainer: document.getElementById(
       "tmw-note-container-inner-inner"

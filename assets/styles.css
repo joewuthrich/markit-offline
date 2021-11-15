@@ -41,7 +41,7 @@ body {
 
 .tmw-half-container {
   width: calc(50vw / 2 - 80px);
-  height: 90vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,11 +52,11 @@ body {
 
 #tmw-main-container {
   width: 100vw;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 80px);
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  top: 60px;
+  top: 80px;
   left: 0;
   display: flex;
 }

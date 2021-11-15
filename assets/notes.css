@@ -56,3 +56,9 @@
 [contenteditable] {
   outline: 0px solid transparent !important;
 }
+
+.ql-editor.ql-blank::before {
+  color: var(--text-hover-color) !important;
+  opacity: 1 !important;
+  font-style: normal !important;
+}

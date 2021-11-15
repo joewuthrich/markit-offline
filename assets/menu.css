@@ -3,9 +3,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
+  overflow: visible;
   z-index: 2;
-  height: 60px;
+  height: 80px;
 }
 
 .tmw-header-menu-inner-container {
@@ -13,6 +13,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
+  background: var(--container-background-color);
+  border-radius: 20px;
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
+  overflow: hidden;
 }
 
 .tmw-page-name-container {
@@ -73,5 +77,13 @@
 @media screen and (max-width: 1450px) {
   .tmw-header-menu-container {
     width: 95%;
+  }
+
+  .tmw-menu-element {
+    font-size: 10px;
+  }
+
+  .tmw-main-page-name {
+    font-size: 15px;
   }
 }

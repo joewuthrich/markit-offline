@@ -5,7 +5,7 @@
   align-items: center;
   overflow: visible;
   z-index: 2;
-  height: 80px;
+  height: 100px;
 }
 
 .tmw-header-menu-inner-container {
@@ -13,25 +13,28 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  background: var(--container-background-color);
+  background: var(--menu-item-color);
   border-radius: 20px;
   filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
   overflow: hidden;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  min-width: 550px;
 }
 
 .tmw-page-name-container {
   display: flex;
   align-items: center;
   flex-direction: column;
-  color: var(--menu-item-color);
-  fill: var(--menu-item-color);
+  color: var(--container-background-color);
+  fill: var(--container-background-color);
 }
 
 .tmw-menu-element {
   font-family: opensans_semibold, Arial;
   font-size: 15px;
   font-weight: 200;
-  color: var(--menu-item-color);
+  color: var(--container-background-color);
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
@@ -42,8 +45,8 @@
 
 .tmw-menu-element:hover,
 .tmw-page-name-container:hover {
-  color: var(--menu-item-color-hover);
-  fill: var(--menu-item-color-hover);
+  color: var(--main-background-color);
+  fill: var(--main-background-color);
   cursor: pointer;
 }
 
@@ -74,9 +77,19 @@
   padding-right: 10px;
 }
 
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1645px) {
+  .tmw-menu-element {
+    font-size: 13px;
+  }
+
+  .tmw-main-page-name {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 1453px) {
   .tmw-header-menu-container {
-    width: 95%;
+    width: 80%;
   }
 
   .tmw-menu-element {
@@ -85,5 +98,33 @@
 
   .tmw-main-page-name {
     font-size: 15px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .tmw-header-menu-container {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .tmw-menu-element {
+    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .tmw-header-menu-container {
+    width: 99%;
+  }
+}
+
+@media screen and (max-width: 630px) {
+  .tmw-menu-element {
+    padding: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }

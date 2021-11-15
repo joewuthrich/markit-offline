@@ -46,13 +46,20 @@
   <body id="tmw-body">
     <div class="tmw-header-menu-container">
       <div class="tmw-header-menu-inner-container">
-        <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
-        <div class="tmw-menu-element" id="tmw-import-json">
-          IMPORT FROM .JSON
+        <div class="tmw-menu-inner-menu-element tmw-menu-inner-left">
+          <div class="tmw-menu-element" id="tmw-sort-page">
+            SORT: ALPHABETICALLY ASC
+          </div>
+          <div class="tmw-menu-element" id="tmw-new-page">NEW PAGE</div>
+          <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
         </div>
-        <div class="tmw-menu-element">VIEW GRAPH</div>
         <div class="tmw-page-name-container">
-          <div class="tmw-menu-element tmw-main-page-name">PAGE NAME</div>
+          <div
+            id="tmw-page-current-name"
+            class="tmw-menu-element tmw-main-page-name"
+          >
+            PAGE NAME
+          </div>
           <svg
             data-layer="9a724ebb-647e-427d-a2be-932a346612f1"
             preserveAspectRatio="none"
@@ -62,9 +69,17 @@
             <path d="M 8 5 L 8 19 L 19 12 L 8 5 Z"></path>
           </svg>
         </div>
-        <div class="tmw-menu-element" id="tmw-dark-mode-toggle">DARK MODE</div>
-        <div id="tmw-export-json" class="tmw-menu-element">EXPORT TO .JSON</div>
-        <div class="tmw-menu-element" id="tmw-delete-page">DELETE PAGE</div>
+        <div class="tmw-menu-inner-menu-element tmw-menu-inner-right">
+          <div class="tmw-menu-element" id="tmw-import-json">
+            IMPORT FROM .JSON
+          </div>
+          <div id="tmw-export-json" class="tmw-menu-element">
+            EXPORT TO .JSON
+          </div>
+          <div class="tmw-menu-element" id="tmw-dark-mode-toggle">
+            DARK MODE
+          </div>
+        </div>
       </div>
     </div>
 
@@ -76,7 +91,7 @@
             <textarea
               id="tmw-comment-entry-area"
               class="tmw-comment-entry-area"
-              placeholder="¶"
+              placeholder="Add a comment here ¶"
             ></textarea>
           </div>
           <div id="tmw-comment-submit-btn" class="tmw-comment-submit-btn">

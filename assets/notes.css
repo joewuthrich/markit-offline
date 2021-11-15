@@ -7,6 +7,12 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
+  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
+}
+
+#tmw-half-note-container {
+  justify-content: flex-start;
 }
 
 .tmw-note-container-inner {
@@ -49,4 +55,10 @@
 
 [contenteditable] {
   outline: 0px solid transparent !important;
+}
+
+.ql-editor.ql-blank::before {
+  color: var(--text-hover-color) !important;
+  opacity: 1 !important;
+  font-style: normal !important;
 }

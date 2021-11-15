@@ -3,8 +3,9 @@
   --container-background-color: rgb(255, 255, 255);
   --text-color: rgb(0, 0, 0);
   --text-hover-color: rgb(80, 80, 80);
-  --menu-background-color: rgba(27, 100, 158, 1);
+  --menu-item-color: rgba(27, 100, 158, 1);
   --modal-background-color: rgba(0, 0, 0, 0.8);
+  --menu-item-color-hover: rgb(15, 58, 94);
 }
 
 ::placeholder {
@@ -39,9 +40,8 @@ body {
 }
 
 .tmw-half-container {
-  margin-top: 10vh;
-  width: 50%;
-  height: 90vh;
+  width: calc(50vw / 2 - 80px);
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,11 +52,11 @@ body {
 
 #tmw-main-container {
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 77px);
   position: absolute;
   align-items: center;
   justify-content: flex-start;
-  top: 0;
+  top: 77px;
   left: 0;
   display: flex;
 }

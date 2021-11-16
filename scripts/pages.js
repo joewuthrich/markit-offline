@@ -7,7 +7,6 @@ window.addEventListener("load", () => {
   var data = localStorage.getItem("comment-data");
   if (data == undefined) data = {};
   else data = JSON.parse(data);
-  console.log;
   var defaultPage = new CommentPage(data["𝕕𝕕𝕕"] ? data["𝕕𝕕𝕕"] : "default");
   document.getElementById("tmw-comment-containers-outer").append(defaultPage);
 });

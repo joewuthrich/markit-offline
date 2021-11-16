@@ -70,7 +70,6 @@ export default class UploadModal extends Modal {
         var nameInput =
           this.children[0].children[4].children[1].children[0].value;
         if (data[nameInput + "𝕕𝕕"]) {
-          console.log(nameInput);
           new OverwriteModal(importedData, nameInput);
           this.style.display = "none";
           return;

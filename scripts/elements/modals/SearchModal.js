@@ -57,7 +57,6 @@ export default class SearchModal extends Modal {
   }
 
   loadNewPage(name) {
-    console.log("hi");
     document
       .getElementById("tmw-comment-containers-outer")
       .childNodes.forEach((element) => {

@@ -112,9 +112,7 @@ export default class Comment extends HTMLElement {
           </div>`;
     this.children[1].children[1].addEventListener("click", () => {
       if (this.count <= 0) return;
-      console.log(this.children[1].children[1].children[0].innerHTML);
       this.children[1].children[1].children[0].innerHTML = --this.count;
-      console.log(this.children[1].children[1].children[0].innerHTML);
       this.parentElement.updateStorage();
     });
     var favBtn = this.children[1].children[2];

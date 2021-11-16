@@ -78,6 +78,7 @@
 }
 
 .tmw-dropdown-icon {
+  margin-top: 3px;
   transform: rotate(90deg);
   fill: inherit;
   width: 8px;

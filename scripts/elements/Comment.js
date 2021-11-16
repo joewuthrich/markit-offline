@@ -19,16 +19,21 @@ export default class Comment extends HTMLElement {
         event.target == icons[2] ||
         event.target == icons[3] ||
         event.target == icons[4] ||
+        event.target == icons[1].children[0] ||
+        event.target == icons[1].children[1] ||
         event.target == icons[2].children[0] ||
+        event.target == icons[2].children[0].children[0] ||
+        event.target == icons[2].children[1] ||
         event.target == icons[3].children[0] ||
-        event.target == icons[4].children[0]
+        event.target == icons[3].children[1] ||
+        event.target == icons[4].children[0] ||
+        event.target == icons[4].children[1]
       )
         return;
-      console.log(event.target);
       navigator.clipboard.writeText(this.children[0].textContent).then(
         () => {
           this.count++;
-          this.children[1].children[1].innerHTML = this.count;
+          this.children[1].children[1].children[0].innerHTML = this.count;
           this.parentElement.updateStorage();
         },
         () => {}
@@ -42,6 +47,7 @@ export default class Comment extends HTMLElement {
       text +
       `</div>
           <div class="tmw-icon-container">
+            <div class="tmw-tooltip-container">
               <svg data-layer="713e396b-e42b-4c48-8333-7cf0799901da" preserveAspectRatio="none" 
               viewBox="1 1 20 20" class="tmw-icon tmw-copy-icon">
                   <path d="M 2.818181753158569 4.636363506317139 L 1 4.636363506317139 L 1 19.18181991577148 C 
@@ -57,9 +63,15 @@ export default class Comment extends HTMLElement {
                   15.54545497894287 L 6.454545497894287 2.818181753158569 L 19.18181991577148 2.818181753158569 L 
                   19.18181991577148 15.54545497894287 Z"></path>
               </svg>
+              <span class="tmw-tooltip-text">Copy Comment</span>
+            </div>
+            <div class="tmw-tooltip-container">
               <div class="tmw-comment-count">` +
       count +
       `</div>
+              <span class="tmw-tooltip-text">Decrement Count</span>
+            </div>
+            <div class="tmw-tooltip-container">
               <svg data-layer="7aa50cf5-5258-4e5e-8822-cf76ef80e349" preserveAspectRatio="none" 
               viewBox="2 2 23.1578369140625 22" class="tmw-icon tmw-favourite-icon">
                   <path d="M 25.15789413452148 10.38315773010254 L 16.8326301574707 9.665263175964355 L 
@@ -72,6 +84,9 @@ export default class Comment extends HTMLElement {
                   16.78631591796875 15.19999980926514 L 17.94421005249023 20.15578842163086 L 13.57894802093506 
                   17.51578903198242 Z"></path>
               </svg>
+              <span class="tmw-tooltip-text">Favourite Comment</span>
+            </div>
+            <div class="tmw-tooltip-container">
               <svg data-layer="c510364e-51cb-42c9-8ed7-791b53439e85" preserveAspectRatio="none" 
               viewBox="3 2.99750018119812 20 20" class="tmw-icon">
                   <path d="M 3 18.83141326904297 L 3 22.99750137329102 L 7.166088104248047 22.99750137329102 
@@ -82,6 +97,9 @@ export default class Comment extends HTMLElement {
                   3.322455167770386 L 16.47590446472168 5.35550594329834 L 20.64199256896973 9.521595001220703 
                   L 22.6750431060791 7.488543510437012 Z"></path>
               </svg>
+              <span class="tmw-tooltip-text">Edit Comment</span>
+            </div>
+            <div class="tmw-tooltip-container">
               <svg data-layer="88c460d8-8934-4c4d-9894-7ba998c3a406" preserveAspectRatio="none" 
               viewBox="5 5 20 20" class="tmw-icon">
                   <path d="M 25 7.014285087585449 L 22.9857120513916 5 L 15 12.98571491241455 L 7.014285087585449 
@@ -89,11 +107,12 @@ export default class Comment extends HTMLElement {
                   17.01428413391113 L 22.9857120513916 25 L 25 22.9857120513916 L 17.01428413391113 15 L 25 
                   7.014285087585449 Z"></path>
               </svg>
+              <span class="tmw-tooltip-text">Delete Comment</span>
+            </div>
           </div>`;
     this.children[1].children[1].addEventListener("click", () => {
       if (this.count <= 0) return;
-      this.count--;
-      this.children[1].children[1].innerHTML = this.count;
+      this.children[1].children[1].children[0].innerHTML = --this.count;
       this.parentElement.updateStorage();
     });
     var favBtn = this.children[1].children[2];
@@ -116,7 +135,7 @@ export default class Comment extends HTMLElement {
   }
 
   toggleFavourite(load = false) {
-    var favElement = this.children[1].children[2];
+    var favElement = this.children[1].children[2].children[0];
     if (this.favourite) {
       favElement.classList.remove("tmw-active-favourite-icon");
       favElement.children[0].setAttribute(

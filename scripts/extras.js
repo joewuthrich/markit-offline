@@ -173,7 +173,6 @@ seperatorIcon.addEventListener("dblclick", () => {
   elementX = 0;
   mouseX = 0;
   commentHalf.style.width = window.innerWidth / 2 - 80 + "px";
-  console.log(window.innerWidth / 2 - 80);
   fixEditorDimensions();
 });
 

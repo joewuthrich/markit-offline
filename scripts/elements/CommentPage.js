@@ -12,7 +12,7 @@ export default class CommentPage extends HTMLElement {
 
     this.name = name;
     this.current = false;
-    this.style = "width: 100%; height: 100%;display:block;";
+    this.classList.add("tmw-comment-page");
 
     var data = localStorage.getItem("comment-data");
     if (data == undefined) data = {};
@@ -26,9 +26,10 @@ export default class CommentPage extends HTMLElement {
     });
     var biggestID = 0;
     if (comments.length > 1) {
-      for (var comment of comments) {
-        if (comments[0] == comment) continue;
-        biggestID = comment[1];
+      for (var comment of comments.slice(1)) {
+        parseInt(comment[2]) > biggestID
+          ? (biggestID = comment[2])
+          : (biggestID = biggestID);
         this.appendChild(
           new Comment(comment[0], comment[1], comment[2], comment[3])
         );
@@ -45,9 +46,11 @@ export default class CommentPage extends HTMLElement {
     localStorage.setItem("comment-data", JSON.stringify(data));
 
     if (name.length > 18)
-      document.getElementById("tmw-page-current-name").innerHTML =
+      document.getElementById("tmw-page-current-name").children[0].innerHTML =
         name.slice(0, 18) + "...";
-    else document.getElementById("tmw-page-current-name").innerHTML = name;
+    else
+      document.getElementById("tmw-page-current-name").children[0].innerHTML =
+        name;
   }
 
   addComment(comment) {
@@ -83,74 +86,73 @@ export default class CommentPage extends HTMLElement {
 
   sortComments() {
     let children = [].slice.call(this.childNodes);
-    console.log(this.sort);
     children
       .sort((comment1, comment2) => {
         switch (this.sort) {
           case ID_ASC:
             if (comment1.favourite && comment2.favourite) {
-              if (comment1.id < comment2.id) return -1;
-              if (comment1.id > comment2.id) return 1;
-            } else if (comment1.favourite) return -1;
-            else if (comment2.favourite) return 1;
+              if (comment1.id < comment2.id) return 1;
+              if (comment1.id > comment2.id) return -1;
+            } else if (comment1.favourite) return 1;
+            else if (comment2.favourite) return -1;
             else {
-              if (comment1.id < comment2.id) return -1;
-              if (comment1.id > comment2.id) return 1;
+              if (comment1.id < comment2.id) return 1;
+              if (comment1.id > comment2.id) return -1;
             }
             break;
           case ID_DESC:
             if (comment1.favourite && comment2.favourite) {
-              if (comment1.id < comment2.id) return 1;
-              if (comment1.id > comment2.id) return -1;
+              if (comment1.id < comment2.id) return -1;
+              if (comment1.id > comment2.id) return 1;
             } else if (comment1.favourite) return -1;
-            else if (comment2.favourite) return 1;
+            else if (comment2.favourite) return -1;
             else {
-              if (comment1.id < comment2.id) return 1;
-              if (comment1.id > comment2.id) return -1;
+              if (comment1.id < comment2.id) return -1;
+              if (comment1.id > comment2.id) return 1;
             }
             break;
           case ALPHA_ASC:
             if (comment1.favourite && comment2.favourite) {
-              if (comment1.text < comment2.text) return -1;
-              if (comment1.text > comment2.text) return 1;
-            } else if (comment1.favourite) return -1;
-            else if (comment2.favourite) return 1;
+              if (comment1.text < comment2.text) return 1;
+              if (comment1.text > comment2.text) return -1;
+            } else if (comment1.favourite) return 1;
+            else if (comment2.favourite) return -1;
             else {
-              if (comment1.text < comment2.text) return -1;
-              if (comment1.text > comment2.text) return 1;
+              if (comment1.text < comment2.text) return 1;
+              if (comment1.text > comment2.text) return -1;
             }
             break;
           case ALPHA_DESC:
             if (comment1.favourite && comment2.favourite) {
-              if (comment1.text < comment2.text) return 1;
-              if (comment1.text > comment2.text) return -1;
-            } else if (comment1.favourite) return -1;
-            else if (comment2.favourite) return 1;
+              if (comment1.text < comment2.text) return -1;
+              if (comment1.text > comment2.text) return 1;
+            } else if (comment1.favourite) return 1;
+            else if (comment2.favourite) return -1;
             else {
-              if (comment1.text < comment2.text) return 1;
-              if (comment1.text > comment2.text) return -1;
+              if (comment1.text < comment2.text) return -1;
+              if (comment1.text > comment2.text) return 1;
             }
             break;
           case USE_ASC:
             if (comment1.favourite && comment2.favourite) {
-              if (comment1.count < comment2.count) return 1;
-              if (comment1.count > comment2.count) return -1;
-            } else if (comment1.favourite) return -1;
-            else if (comment2.favourite) return 1;
-            else {
               if (comment1.count < comment2.count) return -1;
               if (comment1.count > comment2.count) return 1;
+            } else if (comment1.favourite) return 1;
+            else if (comment2.favourite) return -1;
+            else {
+              if (comment1.count < comment2.count) return 1;
+              if (comment1.count > comment2.count) return -1;
             }
             break;
           case USE_DESC:
             if (comment1.favourite && comment2.favourite) {
-              if (comment1.count < comment2.count) return -1;
-              if (comment1.count > comment2.count) return 1;
-            } else if (comment1.favourite) return -1;
-            else if (comment2.favourite) return 1;
-            else {
               if (comment1.count < comment2.count) return 1;
               if (comment1.count > comment2.count) return -1;
+            } else if (comment1.favourite) return 1;
+            else if (comment2.favourite) return -1;
+            else {
+              if (comment1.count < comment2.count) return -1;
+              if (comment1.count > comment2.count) return 1;
             }
             break;
         }
@@ -170,7 +172,7 @@ export default class CommentPage extends HTMLElement {
     let data = JSON.parse(localStorage.getItem("comment-data"));
     if (data == null) data = {};
     data[this.name + "𝕕𝕕"] = [
-      "",
+      data[this.name + "𝕕𝕕"] ? data[this.name + "𝕕𝕕"][0] : "",
       ...Array.from(this.children, (item) => item.toArray()),
     ];
     localStorage.setItem("comment-data", JSON.stringify(data));

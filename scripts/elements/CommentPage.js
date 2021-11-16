@@ -30,8 +30,6 @@ export default class CommentPage extends HTMLElement {
         parseInt(comment[2]) > biggestID
           ? (biggestID = comment[2])
           : (biggestID = biggestID);
-        console.log(comment[2]);
-        console.log(biggestID);
         this.appendChild(
           new Comment(comment[0], comment[1], comment[2], comment[3])
         );
@@ -65,9 +63,6 @@ export default class CommentPage extends HTMLElement {
       () => {}
     );
     let data = JSON.parse(localStorage.getItem("comment-data"));
-    this.commentCount == this.children.length
-      ? console.log(true)
-      : console.log(false);
     comment = new Comment(this.commentCount++, comment);
     data[this.name + "𝕕𝕕"].push(comment.toArray());
     this.appendChild(comment);

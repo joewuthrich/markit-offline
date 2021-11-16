@@ -14,7 +14,7 @@
   position: absolute;
   z-index: 3;
   top: 150%;
-  left: 50%;
+  left: 0%;
   margin-left: -110px;
 }
 
@@ -22,8 +22,8 @@
   content: " ";
   position: absolute;
   bottom: 100%;
-  left: 50%;
-  margin-left: 30px;
+  left: 0%;
+  margin-left: 136px;
   border-width: 5px;
   border-style: solid;
   border-color: transparent transparent black transparent;

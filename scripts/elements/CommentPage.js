@@ -45,9 +45,11 @@ export default class CommentPage extends HTMLElement {
     localStorage.setItem("comment-data", JSON.stringify(data));
 
     if (name.length > 18)
-      document.getElementById("tmw-page-current-name").innerHTML =
+      document.getElementById("tmw-page-current-name").children[0].innerHTML =
         name.slice(0, 18) + "...";
-    else document.getElementById("tmw-page-current-name").innerHTML = name;
+    else
+      document.getElementById("tmw-page-current-name").children[0].innerHTML =
+        name;
   }
 
   addComment(comment) {

@@ -26,9 +26,12 @@ export default class CommentPage extends HTMLElement {
     });
     var biggestID = 0;
     if (comments.length > 1) {
-      for (var comment of comments) {
-        if (comments[0] == comment) continue;
-        biggestID = comment[1];
+      for (var comment of comments.slice(1)) {
+        parseInt(comment[2]) > biggestID
+          ? (biggestID = comment[2])
+          : (biggestID = biggestID);
+        console.log(comment[2]);
+        console.log(biggestID);
         this.appendChild(
           new Comment(comment[0], comment[1], comment[2], comment[3])
         );
@@ -62,6 +65,9 @@ export default class CommentPage extends HTMLElement {
       () => {}
     );
     let data = JSON.parse(localStorage.getItem("comment-data"));
+    this.commentCount == this.children.length
+      ? console.log(true)
+      : console.log(false);
     comment = new Comment(this.commentCount++, comment);
     data[this.name + "𝕕𝕕"].push(comment.toArray());
     this.appendChild(comment);
@@ -103,11 +109,11 @@ export default class CommentPage extends HTMLElement {
             if (comment1.favourite && comment2.favourite) {
               if (comment1.id < comment2.id) return -1;
               if (comment1.id > comment2.id) return 1;
-            } else if (comment1.favourite) return 1;
-            else if (comment2.favourite) return 1;
+            } else if (comment1.favourite) return -1;
+            else if (comment2.favourite) return -1;
             else {
               if (comment1.id < comment2.id) return -1;
-              if (comment1.id > comment2.id) return -1;
+              if (comment1.id > comment2.id) return 1;
             }
             break;
           case ALPHA_ASC:

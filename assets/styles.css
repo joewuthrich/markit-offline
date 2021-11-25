@@ -91,6 +91,24 @@ body {
   min-width: 40px;
 }
 
+.tmw-creator {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 10px;
+  color: var(--text-color);
+}
+
+.tmw-creator-link {
+  color: var(--menu-item-color);
+}
+
+.tmw-creator-link:hover,
+.tmw-creator-link:active,
+.tmw-creator-link:visited {
+  color: var(--text-hover-color);
+}
+
 .ql-toolbar,
 .ql-container {
   border: 0px solid transparent !important;

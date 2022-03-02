@@ -2,6 +2,10 @@ import UploadModal from "./elements/modals/UploadModal.js";
 
 var editor;
 
+window.addEventListener("load", () => {
+  document.getElementById("tmw-body").style.display = "flex";
+});
+
 /**
  * Setting up dark mode
  */

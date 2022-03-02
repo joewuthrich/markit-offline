@@ -33,7 +33,7 @@
   padding-right: 20px;
   font-family: opensans_regular, Arial;
   flex: 1 1 auto;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .tmw-comment-entry-area:focus,

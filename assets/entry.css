@@ -1,9 +1,9 @@
 .tmw-comment-entry-container {
   background: var(--container-background-color);
-  -webkit-filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
-  filter: drop-shadow(0px 3px 6px rgba(0, 0, 0, 0.1607843137254902));
+  -webkit-filter: drop-shadow(0px 3px 6px var(--shadow-color));
+  filter: drop-shadow(0px 3px 6px var(--shadow-color));
   width: 80%;
-  height: 205px;
+  height: 190px;
   border-radius: 20px;
   display: flex;
   justify-content: space-between;
@@ -11,8 +11,8 @@
 }
 
 .tmw-comment-entry-area-container {
-  margin: 30px;
-  margin-right: 0px;
+  margin: 22.5px;
+  margin-right: 60px;
   height: 145px;
   width: 100%;
   background-color: var(--main-background-color);
@@ -48,6 +48,8 @@
   color: var(--text-color);
   transform: rotate(90deg);
   user-select: none;
+  position: absolute;
+  right: -8px;
 }
 
 .tmw-comment-submit-btn:hover {

@@ -3,9 +3,14 @@
   --container-background-color: rgb(255, 255, 255);
   --text-color: rgb(0, 0, 0);
   --text-hover-color: rgb(80, 80, 80);
-  --menu-item-color: rgba(27, 100, 158, 1);
+  --menu-item-color: rgb(255, 255, 255);
   --modal-background-color: rgba(0, 0, 0, 0.8);
-  --menu-item-color-hover: rgb(15, 58, 94);
+  --menu-item-color-hover: rgb(212, 235, 255);
+  --menu-background-color: rgb(114, 168, 193);
+  --shadow-color: rgba(0, 0, 0, 0.1607843137254902);
+  --comment-hover-background-color: rgb(225, 238, 255);
+  --menu-btn-background-color: rgb(230, 253, 225);
+  --menu-btn-background-color-hover: rgb(219, 245, 213);
 }
 
 ::placeholder {
@@ -14,7 +19,7 @@
 }
 
 body {
-  font-family: "Open Sans", serif;
+  font-family: opensans_regular, sans-serif;
   margin: 0;
   padding: 0;
   height: 100vh;
@@ -37,6 +42,11 @@ body {
 @font-face {
   font-family: opensans_regular;
   src: url(./OpenSans-Regular.ttf);
+}
+
+@font-face {
+  font-family: opensans_lighter;
+  src: url(./OpenSans-Light.ttf);
 }
 
 .tmw-half-container {
@@ -86,9 +96,10 @@ body {
 
 .tmw-main-spacer {
   width: 40px;
-  height: 25px;
-  min-height: 25px;
+  height: 22.5px;
+  min-height: 22.5px;
   min-width: 40px;
+  flex: 0 1 auto;
 }
 
 .tmw-creator {
@@ -97,6 +108,7 @@ body {
   top: 0;
   font-size: 10px;
   color: var(--text-color);
+  z-index: 2;
 }
 
 .tmw-creator-link {
@@ -112,7 +124,7 @@ body {
 .ql-toolbar,
 .ql-container {
   border: 0px solid transparent !important;
-  font-family: "Open Sans", serif;
+  font-family: opensans_regular, sans-serif;
 }
 
 .ql-snow .ql-stroke {

@@ -1,11 +1,12 @@
 .tmw-header-menu-container {
-  width: 70%;
+  width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
   overflow: visible;
   z-index: 2;
   height: 70px;
+  -webkit-filter: drop-shadow(0px 3px 6px var(--shadow-color));
+  filter: drop-shadow(0px 3px 6px var(--shadow-color));
 }
 
 .tmw-header-menu-inner-container {
@@ -13,13 +14,10 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
   overflow: visible;
-  padding-top: 7px;
-  padding-bottom: 7px;
   min-width: 550px;
   position: relative;
+  background-color: var(--menu-background-color);
 }
 
 /* .tmw-header-menu-inner-container::after {

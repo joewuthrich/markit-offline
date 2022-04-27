@@ -73,11 +73,15 @@
   font-family: opensans_semibold, Arial;
   color: var(--text-color);
   user-select: none;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+  background-color: var(--menu-btn-background-color);
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .tmw-modal-submit-btn:hover {
   color: var(--text-hover-color);
+  background-color: var(--menu-btn-background-color-hover);
   cursor: pointer;
 }
 

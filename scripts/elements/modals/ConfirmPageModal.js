@@ -11,7 +11,7 @@ export default class ConfirmPageModal extends Modal {
     );
 
     this.children[0].style.flexDirection = "column";
-    this.children[0].style.width = "70%";
+    this.children[0].style.width = "40%";
     this.children[0].style.minWidth = "400px";
     this.name = name;
 

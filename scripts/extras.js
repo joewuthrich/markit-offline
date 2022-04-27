@@ -32,24 +32,39 @@ function toggleDark() {
     "--menu-item-color",
     "--modal-background-color",
     "--menu-item-color-hover",
+    "--menu-background-color",
+    "--shadow-color",
+    "--comment-hover-background-color",
+    "--menu-btn-background-color",
+    "--menu-btn-background-color-hover",
   ];
   let darkColors = [
     "rgb(19, 19, 19)",
     "rgb(36, 36, 36)",
     "rgb(255, 255, 255)",
     "rgb(196, 196, 196)",
-    "rgb(79, 119, 151)",
+    "rgb(230, 230, 230)",
     "rgba(0, 0, 0, 0.6)",
-    "rgb(105, 129, 148)",
+    "rgb(200, 200, 200)",
+    "rgb(43, 63, 72)",
+    "rgba(100, 100, 100, 0.1607843137254902)",
+    "rgb(48, 54, 57)",
+    "rgb(47, 66, 43)",
+    "rgb(47, 60, 44)",
   ];
   let lightColors = [
     "rgb(238, 238, 238)",
     "rgb(255, 255, 255)",
     "rgb(0, 0, 0)",
     "rgb(80, 80, 80)",
-    "rgba(27, 100, 158, 1)",
+    "rgb(255, 255, 255)",
     "rgba(0, 0, 0, 0.8)",
-    "rgb(15, 58, 94)",
+    "rgb(212, 235, 255)",
+    "rgb(114, 168, 193)",
+    "rgba(0, 0, 0, 0.1607843137254902)",
+    "rgb(225, 238, 255)",
+    "rgb(230, 253, 225)",
+    "rgb(219, 245, 213)",
   ];
 
   for (let i = 0; i < properties.length; i++) {

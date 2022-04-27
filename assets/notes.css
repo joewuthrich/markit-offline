@@ -1,6 +1,6 @@
 #tmw-note-container-outer {
   width: 100%;
-  height: 95%;
+  height: calc(100% - 20px);
   background: var(--container-background-color);
   border-radius: 20px;
   display: flex;

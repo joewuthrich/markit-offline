@@ -43,7 +43,6 @@
 
 .tmw-comment-submit-btn {
   font-size: 20px;
-  font-weight: 700;
   font-family: opensans_semibold, Arial;
   color: var(--text-color);
   transform: rotate(90deg);

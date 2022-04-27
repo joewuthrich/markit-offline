@@ -4,7 +4,7 @@
   justify-content: center;
   overflow: visible;
   z-index: 2;
-  height: 70px;
+  height: 60px;
   -webkit-filter: drop-shadow(0px 3px 6px var(--shadow-color));
   filter: drop-shadow(0px 3px 6px var(--shadow-color));
 }

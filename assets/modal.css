@@ -135,6 +135,7 @@
   height: 400px;
   width: calc(100% - 50px);
   margin-bottom: 10px;
+  overflow: auto;
 }
 
 .tmw-page-name-elem {
@@ -142,6 +143,7 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  margin-right: 5px;
 }
 
 .tmw-page-name-name {
